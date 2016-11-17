@@ -1,7 +1,7 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-	<h1>Hello World!</h1>
+	<h2>AppBundle - Home <i class="fa fa-birthday-cake" aria-hidden="true"></i></h2>
 	{% if app.user == null %}
 		<p><a href="{{ path('fos_user_security_login') }}">Connexion</a></p>
 		<p><a href="{{ path('fos_user_registration_register') }}">Inscription</a></p>
