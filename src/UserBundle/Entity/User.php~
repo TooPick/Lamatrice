@@ -42,38 +42,5 @@ class User extends BaseUser
     {
         parent::__construct();
     }
-
-    /**
-     * Add cart
-     *
-     * @param \AppBundle\Entity\Cart $cart
-     *
-     * @return User
-     */
-    public function addCart(\AppBundle\Entity\Cart $cart)
-    {
-        $this->carts[] = $cart;
-
-        return $this;
-    }
-
-    /**
-     * Remove cart
-     *
-     * @param \AppBundle\Entity\Cart $cart
-     */
-    public function removeCart(\AppBundle\Entity\Cart $cart)
-    {
-        $this->carts->removeElement($cart);
-    }
-
-    /**
-     * Get carts
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCarts()
-    {
-        return $this->carts;
-    }
 }
+
