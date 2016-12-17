@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Enum\StatusTypeEnum;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,6 +39,12 @@ class Cart
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\CartProduct", mappedBy="cart")
      */
     private $cartProducts;
+
+    /**
+     * @var string
+     * @ORM\Column(name="status", type="string", length=255, nullable=false)
+     */
+    private $status;
 
 
     /**
@@ -137,5 +144,33 @@ class Cart
     public function getCartProducts()
     {
         return $this->cartProducts;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return Cart
+     */
+    public function setStatus($status)
+    {
+        if (!in_array($status, StatusTypeEnum::getAvailableTypes())) {
+            throw new \InvalidArgumentException("Statut inconnu");
+        }
+
+        $this->type = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }
