@@ -2,6 +2,10 @@ app_homepage:
     path:     /
     defaults: { _controller: AppBundle:App:index }
 
+app_products_list:
+    path:     /{type}/list
+    defaults: { _controller: AppBundle:App:productsList }
+
 test:
     path:     /test
     defaults: { _controller: AppBundle:App:test }

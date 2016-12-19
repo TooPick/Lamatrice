@@ -26,6 +26,26 @@ class AppController extends Controller
         ));
     }
 
+    public function productsListAction($type) {
+    	$em = $this->getDoctrine()->getManager();
+    	$productRepository = $em->getRepository("AppBundle:Product");
+
+    	$products = array();
+    	if($type == "stationery"){
+    		$products = $productRepository->findBy(array(
+    		"category" => CategoryTypeEnum::TYPE_STATIONERY,
+    		));
+    	}else {
+    		$products = $productRepository->findBy(array(
+    		"category" => CategoryTypeEnum::TYPE_PLASTIC,
+    		));
+    	}
+    	return $this->render('AppBundle:App:productsList.html.twig', array(
+    		'type' => $type,
+        	'products' => $products,
+        ));
+    }
+
     public function testAction()
     {
     	return $this->render('AppBundle:App:base.html.twig');
