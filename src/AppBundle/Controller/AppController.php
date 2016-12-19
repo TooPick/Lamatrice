@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Enum\CategoryTypeEnum;
+use AppBundle\Entity\Product;
 
 class AppController extends Controller
 {
@@ -43,6 +44,12 @@ class AppController extends Controller
     	return $this->render('AppBundle:App:productsList.html.twig', array(
     		'type' => $type,
         	'products' => $products,
+        ));
+    }
+
+    public function productAction(Product $product) {
+        return $this->render('AppBundle:App:product.html.twig', array(
+            'product' => $product,
         ));
     }
 
