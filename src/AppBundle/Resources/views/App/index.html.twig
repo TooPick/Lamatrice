@@ -1,12 +1,53 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-	<h2>AppBundle - Home <i class="fa fa-birthday-cake" aria-hidden="true"></i></h2>
-	{% if app.user == null %}
-		<p><a href="{{ path('fos_user_security_login') }}">Connexion</a></p>
-		<p><a href="{{ path('fos_user_registration_register') }}">Inscription</a></p>
-	{% else %}
-		<p><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></p>
-	{% endif %}
-	{{ dump(productsPlastic)}}
+  	<!-- Products section -->
+	<section id="aa-product">
+	<div class="container">
+	  <div class="row">
+	    <div class="col-md-12">
+	      <div class="row">
+	        <div class="aa-product-area">
+	          <div class="aa-product-inner">
+	            <!-- start prduct navigation -->
+	             <ul class="nav nav-tabs aa-products-tab">
+	                <li class="active"><a href="#stationery" data-toggle="tab">Papeterie</a></li>
+	                <li><a href="#plastic" data-toggle="tab">Plastique</a></li>
+	              </ul>
+	              <!-- Tab panes -->
+	              <div class="tab-content">
+	                <!-- Start men product category -->
+	                <div class="tab-pane fade in active text-center" id="stationery">
+	                  <ul class="aa-product-catg">
+	                    <!-- start single product item -->
+	                    {% for product in productsStationery %}
+	            			{% include "AppBundle:App:productHome.html.twig" %} 
+	            		{% endfor %}
+	                  </ul>
+	                  <div class="text-center">
+	                  	<a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
+	                  </div>
+	                </div>
+
+	                <div class="tab-pane fade" id="plastic">
+	                  <ul class="aa-product-catg">
+	                    <!-- start single product item -->
+	                    {% for product in productsPlastic %}
+	            			{% include "AppBundle:App:productHome.html.twig" %} 
+	            		{% endfor %}
+	                  </ul>
+	                  <div class="text-center">
+	                  	<a class="aa-browse-btn" href="#">Browse all Product<span class="fa fa-long-arrow-right"></span></a>
+	                  </div>
+	               </div>
+
+	              </div>
+	              
+
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 {% endblock %}
