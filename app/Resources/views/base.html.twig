@@ -184,8 +184,8 @@
                     <!-- Left nav -->
                     <ul class="nav navbar-nav">
                         <li><a href="{{ path('app_homepage') }}">Accueil</a></li>
-                        <li><a href="#">Papeterie</a></li>
-                        <li><a href="#">Plastique</a></li>
+                        <li><a href="{{ path('app_products_list', {type: 'stationery'}) }}">Papeterie</a></li>
+                        <li><a href="{{ path('app_products_list', {type: 'plastic'}) }}">Plastique</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
