@@ -78,6 +78,9 @@
                                     <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
                                     <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
                                 {% else %}
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <li><a href="{{ path('admin_homepage') }}">Administration</a></li>
+                                    {% endif %}
                                     <li><a href="{{ path('user_account') }}">Mon Compte</a></li>
                                     <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                                 {% endif %}
@@ -125,9 +128,9 @@
                                         {% set quantityPopup = cartProductPopup.quantity %}
 
                                         <li>
-                                            <a class="aa-cartbox-img" href="#"><img src="{{ asset("theme/img/woman-small-2.jpg") }}" alt="img"></a>
+                                            <a class="aa-cartbox-img" href="{{ path('app_product_show', {id: productPopup.id}) }}"><img src="{{ asset("theme/img/woman-small-2.jpg") }}" alt="img"></a>
                                             <div class="aa-cartbox-info">
-                                                <h4><a href="#">{{ productPopup.name }}</a></h4>
+                                                <h4><a href="{{ path('app_product_show', {id: productPopup.id}) }}">{{ productPopup.name }}</a></h4>
                                                 <p>{{ quantityPopup }} x {{ productPopup.price }} €</p>
                                             </div>
                                             <a class="aa-remove-product" href="{{ path('app_cart_remove_product', {id: productPopup.id}) }}"><span class="fa fa-times"></span></a>

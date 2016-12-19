@@ -48,8 +48,8 @@
                         {% set cartPrice = cartPrice + totalProductPrice %}
 
                         <td><a class="remove" href="{{ path('app_cart_remove_product', {id: product.id}) }}"><fa class="fa fa-close"></fa></a></td>
-                        <td><a href="#"><img src="http://lorempixel.com/250/300/cats" alt="img"></a></td>
-                        <td><a class="aa-cart-title" href="#">{{ product.name }}</a></td>
+                        <td><a href="{{ path('app_product_show', {id: product.id}) }}"><img src="http://lorempixel.com/250/300/cats" alt="img"></a></td>
+                        <td><a class="aa-cart-title" href="{{ path('app_product_show', {id: product.id}) }}">{{ product.name }}</a></td>
                         <td>{{ product.price }} €</td>
                         <td>{{ quantity }}</td>
                         <td>{{ product.price * quantity}} €</td>
