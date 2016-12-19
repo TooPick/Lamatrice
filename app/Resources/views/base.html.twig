@@ -217,45 +217,35 @@
                 <div class="col-md-12">
                     <div class="aa-footer-top-area">
                         <div class="row">
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-4 col-sm-6">
                                 <div class="aa-footer-widget">
-                                    <h3>Main Menu</h3>
+                                    <h3>Menu</h3>
                                     <ul class="aa-footer-nav">
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="#">Our Products</a></li>
-                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="{{ path("app_homepage") }}">Acceuil</a></li>
+                                        <li><a href="{{ path("app_products_list", {type: 'stationery'}) }}">Produits Papeterie</a></li>
+                                        <li><a href="{{ path("app_products_list", {type: 'plastic'}) }}">Produits Plastique</a></li>
+                                        <li><a href="{{ path("app_contact") }}">Contactez-nous !</a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-4 col-sm-6">
                                 <div class="aa-footer-widget">
                                     <div class="aa-footer-widget">
-                                        <h3>Knowledge Base</h3>
-                                        <ul class="aa-footer-nav">
-                                            <li><a href="#">Delivery</a></li>
-                                            <li><a href="#">Returns</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="aa-footer-widget">
-                                    <div class="aa-footer-widget">
-                                        <h3>Useful Links</h3>
+                                        <h3>Liens utiles</h3>
                                         <ul class="aa-footer-nav">
                                             <li><a href="#">Site Map</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-4 col-sm-6">
                                 <div class="aa-footer-widget">
                                     <div class="aa-footer-widget">
-                                        <h3>Contact Us</h3>
+                                        <h3>Contactez-nous</h3>
                                         <address>
                                             <p> 163 Avenue de Luminy, 13288 Marseille</p>
                                             <p><span class="fa fa-phone"></span>04 91 82 90 00</p>
-                                            <p><span class="fa fa-envelope"></span>lamatrice@gmail.com</p>
+                                            <p><span class="fa fa-envelope"></span>suport@lamatrice.com</p>
                                         </address>
                                     </div>
                                 </div>
