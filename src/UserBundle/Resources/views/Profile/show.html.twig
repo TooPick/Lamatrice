@@ -13,7 +13,30 @@
                                     <div class="aa-myaccount-register">
                                         <h4>Mes paniers non validés</h4>
 
-                                        <p>PANIERS</p>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>N°</th>
+                                                    <th>Nombre d'articles</th>
+                                                    <th>Total</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for cart in unvalidatedCarts %}
+                                                    {% set totalValidated = 0 %}
+                                                    {% for cartProduct in cart.cartProducts %}
+                                                        {% set totalValidated = totalValidated + (cartProduct.quantity * cartProduct.product.price) %}
+                                                    {% endfor %}
+                                                    <tr>
+                                                        <td>Panier {{ cart.id }}</td>
+                                                        <td>{{ cart.cartProducts|length }}</td>
+                                                        <td>{{ totalValidated }} €</td>
+                                                        <td><a class="aa-browse-btn" href="#">Voir</a> <a class="aa-browse-btn" href="{{ path('app_cart_use', {id: cart.id}) }}">Utiliser</a></td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
 
@@ -21,7 +44,30 @@
                                     <div class="aa-myaccount-register">
                                         <h4>Mes paniers validés</h4>
 
-                                        <p>PANIERS</p>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>N°</th>
+                                                <th>Nombre d'articles</th>
+                                                <th>Total</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for cart in validatedCarts %}
+                                                {% set totalValidated = 0 %}
+                                                {% for cartProduct in cart.cartProducts %}
+                                                    {% set totalValidated = totalValidated + (cartProduct.quantity * cartProduct.product.price) %}
+                                                {% endfor %}
+                                                <tr>
+                                                    <td>Panier {{ cart.id }}</td>
+                                                    <td>{{ cart.cartProducts|length }}</td>
+                                                    <td>{{ totalValidated }} €</td>
+                                                    <td><a class="aa-browse-btn" href="#">Voir</a></td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>

@@ -14,3 +14,13 @@ app_cart_remove_product:
     defaults: { _controller: AppBundle:Cart:removeProduct }
     requirements:
         id: \d+
+
+app_cart_use:
+    path:     /use/{id}
+    defaults: { _controller: AppBundle:Cart:useCart }
+    requirements:
+        id: \d+
+
+app_cart_save:
+    path:     /save
+    defaults: { _controller: AppBundle:Cart:saveCart }

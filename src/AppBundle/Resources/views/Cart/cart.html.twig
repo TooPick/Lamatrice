@@ -25,41 +25,39 @@
           <div class="col-md-12">
             <div class="cart-view-area">
               <div class="cart-view-table">
-                <form action="">
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th>Produit</th>
+                      <th>Prix</th>
+                      <th>Quantité</th>
+                      <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% set cartPrice = 0 %}
+                    {% for cartProduct in cart.cartProducts %}
                       <tr>
-                        <th></th>
-                        <th></th>
-                        <th>Produit</th>
-                        <th>Prix</th>
-                        <th>Quantité</th>
-                        <th>Total</th>
+                        {% set product = cartProduct.product %}
+                        {% set quantity = cartProduct.quantity %}
+                        {% set totalProductPrice = product.price * quantity %}
+                        {% set cartPrice = cartPrice + totalProductPrice %}
+
+                        <td><a class="remove" href="{{ path('app_cart_remove_product', {id: product.id}) }}"><fa class="fa fa-close"></fa></a></td>
+                        <td><a href="#"><img src="http://lorempixel.com/250/300/cats" alt="img"></a></td>
+                        <td><a class="aa-cart-title" href="#">{{ product.name }}</a></td>
+                        <td>{{ product.price }} €</td>
+                        <td>{{ quantity }}</td>
+                        <td>{{ product.price * quantity}} €</td>
                       </tr>
-                      </thead>
-                      <tbody>
-
-                        {% set cartPrice = 0 %}
-                        {% for cartProduct in cart.cartProducts %}
-                          <tr>
-                            {% set product = cartProduct.product %}
-                            {% set quantity = cartProduct.quantity %}
-                            {% set totalProductPrice = product.price * quantity %}
-                            {% set cartPrice = cartPrice + totalProductPrice %}
-
-                            <td><a class="remove" href="{{ path('app_cart_remove_product', {id: product.id}) }}"><fa class="fa fa-close"></fa></a></td>
-                            <td><a href="#"><img src="http://lorempixel.com/250/300/cats" alt="img"></a></td>
-                            <td><a class="aa-cart-title" href="#">{{ product.name }}</a></td>
-                            <td>{{ product.price }} €</td>
-                            <td>{{ quantity }}</td>
-                            <td>{{ product.price * quantity}} €</td>
-                          </tr>
-                      {% endfor %}
-                      </tbody>
-                    </table>
-                  </div>
-                </form>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
                 <!-- Cart Total view -->
                 <div class="cart-view-total">
                   <h4>Total du panier</h4>
@@ -71,7 +69,7 @@
                     </tr>
                     </tbody>
                   </table>
-                  <a href="#" class="aa-cart-view-btn">Procéder au paiement</a>
+                  <a href="{{ path('app_cart_save') }}" class="aa-cart-view-btn">Sauvegarder pour plus tard</a><a href="#" class="aa-cart-view-btn">Procéder au paiement</a>
                 </div>
               </div>
             </div>

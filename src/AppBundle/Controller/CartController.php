@@ -32,7 +32,7 @@ class CartController extends Controller
         ));
     }
 
-    public function addProductAction(Request $request, Product $product, $quantity)
+    public function addProductAction(Product $product, $quantity)
     {
         $currentCartId = $this->get('session')->get('user_current_cart_id');
         $user = $this->getUser();
@@ -97,7 +97,7 @@ class CartController extends Controller
         return $this->redirectToRoute('app_homepage');
     }
 
-    public function removeProductAction(Request $request, Product $product)
+    public function removeProductAction(Product $product)
     {
         $currentCartId = $this->get('session')->get('user_current_cart_id');
 
@@ -126,6 +126,32 @@ class CartController extends Controller
         }
 
         //TODO : redirect vers page article ou panier
+        return $this->redirectToRoute('app_homepage');
+    }
+
+    public function useCartAction(Cart $cart)
+    {
+        $user = $this->getUser();
+        if($cart->getUser() == $user) {
+
+            if($cart->getValidated())
+                $this->get('session')->getFlashBag()->add('warning', "Le panier choisi a déjà été validé.");
+            else {
+                $this->get('session')->set('user_current_cart_id', $cart->getId());
+                $this->get('session')->getFlashBag()->add('success', "Le panier en cours d'utilisation a bien été changé.");
+            }
+
+        } else
+            throw $this->createNotFoundException("Erreur : Panier introuvable.");
+
+        return $this->redirectToRoute('user_account');
+    }
+    
+    public function saveCartAction()
+    {
+        $this->get('session')->set('user_current_cart_id', null);
+        $this->get('session')->getFlashBag()->add('success', "Le panier a bien été sauvegardé, vous pouvez le retrouver dans la section \"Mon Compte\".");
+
         return $this->redirectToRoute('app_homepage');
     }
 }
