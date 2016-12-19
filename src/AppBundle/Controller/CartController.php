@@ -14,7 +14,6 @@ class CartController extends Controller
     public function showCartAction()
     {
         $currentCartId = $this->get('session')->get('user_current_cart_id');
-        $user = $this->getUser();
 
         $em = $this->getDoctrine()->getManager();
 
@@ -90,6 +89,38 @@ class CartController extends Controller
                     $em->flush();
 
                     $this->get('session')->getFlashBag()->add('success', "Le produit a bien été ajouté au panier.");
+                }
+            }
+        }
+
+        //TODO : redirect vers page article ou panier
+        return $this->redirectToRoute('app_homepage');
+    }
+
+    public function removeProductAction(Request $request, Product $product)
+    {
+        $currentCartId = $this->get('session')->get('user_current_cart_id');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $cart = null;
+        if($currentCartId != null) {
+            $cartRepository = $em->getRepository('AppBundle:Cart');
+
+            $cart = $cartRepository->find($currentCartId);
+
+            if($cart != null) {
+                $cartProductRepository = $em->getRepository('AppBundle:CartProduct');
+                $cartProduct = $cartProductRepository->findOneBy(array(
+                    'cart' => $cart,
+                    'product' => $product,
+                ));
+
+                if($cartProduct != null) {
+                    $em->remove($cartProduct);
+                    $em->flush();
+
+                    $this->get('session')->getFlashBag()->add('success', "Le produit a bien été retiré du panier.");
                 }
             }
         }

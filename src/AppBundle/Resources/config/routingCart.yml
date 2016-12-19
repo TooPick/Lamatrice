@@ -8,3 +8,9 @@ app_cart_add_product:
     requirements:
         id: \d+
         quantity: \d+
+
+app_cart_remove_product:
+    path:     /remove/product/{id}
+    defaults: { _controller: AppBundle:Cart:removeProduct }
+    requirements:
+        id: \d+

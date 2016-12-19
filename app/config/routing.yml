@@ -17,9 +17,11 @@ app_cart:
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
-fos_user_profile:
-    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-    prefix: /profile
+fos_user_profile_edit:
+    path: /profile/edit
+    defaults: { _controller: FOSUserBundle:Profile:edit }
+    requirements:
+        _method: GET|POST
 
 fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
