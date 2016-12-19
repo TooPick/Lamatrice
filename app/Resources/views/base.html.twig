@@ -113,36 +113,40 @@
                             <a class="aa-cart-link" href="{{ path('app_cart_show') }}">
                                 <span class="fa fa-shopping-basket"></span>
                                 <span class="aa-cart-title">MON PANIER</span>
-                                <span class="aa-cart-notify">2</span>
+                                {% if getCartProductsNumber() > 0 %}
+                                    <span class="aa-cart-notify">{{ getCartProductsNumber() }}</span>
+                                {% endif %}
                             </a>
                             <div class="aa-cartbox-summary">
+                                {% set cart = getCurrentCart() %}
+                                {% set total = 0 %}
                                 <ul>
+                                    {% for cartProduct in cart.cartProducts %}
+                                        {% set product = cartProduct.product %}
+                                        {% set quantity = cartProduct.quantity %}
+
+                                        <li>
+                                            <a class="aa-cartbox-img" href="#"><img src="{{ asset("theme/img/woman-small-2.jpg") }}" alt="img"></a>
+                                            <div class="aa-cartbox-info">
+                                                <h4><a href="#">{{ product.name }}</a></h4>
+                                                <p>{{ quantity }} x {{ product.price }} €</p>
+                                            </div>
+                                            <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                                        </li>
+
+                                        {% set total = total + (quantity * product.price) %}
+
+                                    {% endfor %}
                                     <li>
-                                        <a class="aa-cartbox-img" href="#"><img src="{{ asset("theme/img/woman-small-2.jpg") }}" alt="img"></a>
-                                        <div class="aa-cartbox-info">
-                                            <h4><a href="#">Product Name</a></h4>
-                                            <p>1 x $250</p>
-                                        </div>
-                                        <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                                    </li>
-                                    <li>
-                                        <a class="aa-cartbox-img" href="#"><img src="{{ asset("theme/img/woman-small-1.jpg") }}" alt="img"></a>
-                                        <div class="aa-cartbox-info">
-                                            <h4><a href="#">Product Name</a></h4>
-                                            <p>1 x $250</p>
-                                        </div>
-                                        <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
-                                    </li>
-                                    <li>
-                      <span class="aa-cartbox-total-title">
-                        Total
-                      </span>
-                      <span class="aa-cartbox-total-price">
-                        $500
-                      </span>
+                                      <span class="aa-cartbox-total-title">
+                                        Total
+                                      </span>
+                                      <span class="aa-cartbox-total-price">
+                                        {{ total }}€
+                                      </span>
                                     </li>
                                 </ul>
-                                <a class="aa-cartbox-checkout aa-primary-btn" href="checkout.html">Checkout</a>
+                                <a class="aa-cartbox-checkout aa-primary-btn" href="{{ path('app_cart_show') }}">Voir le panier</a>
                             </div>
                         </div>
                         <!-- / cart box -->
