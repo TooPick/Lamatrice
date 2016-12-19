@@ -28,7 +28,7 @@ class CartController extends Controller
         if($cart == null)
             $cart = new Cart();
 
-        return $this->render('AppBundle:Cart:showCart.html.twig', array(
+        return $this->render('AppBundle:Cart:cart.html.twig', array(
             'cart' => $cart,
         ));
     }
