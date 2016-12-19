@@ -11,6 +11,28 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CartController extends Controller
 {
+    public function showCartAction()
+    {
+        $currentCartId = $this->get('session')->get('user_current_cart_id');
+        $user = $this->getUser();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $cart = null;
+        if($currentCartId != null) {
+            $cartRepository = $em->getRepository('AppBundle:Cart');
+
+            $cart = $cartRepository->find($currentCartId);
+        }
+
+        if($cart == null)
+            $cart = new Cart();
+
+        return $this->render('AppBundle:Cart:showCart.html.twig', array(
+            'cart' => $cart,
+        ));
+    }
+
     public function addProductAction(Request $request, Product $product, $quantity)
     {
         $currentCartId = $this->get('session')->get('user_current_cart_id');
