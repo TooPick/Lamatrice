@@ -102,7 +102,7 @@
                             <!-- Text based logo -->
                             <a href="{{ path('app_homepage') }}">
                                 <span class="fa fa-shopping-cart"></span>
-                                <p>Lama<strong>trice</strong> <span>Your Shopping Partner</span></p>
+                                <p>Lama<strong>trice</strong> <span>Un lama est ton lama</span></p>
                             </a>
                             <!-- img based logo -->
                             <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
@@ -131,7 +131,7 @@
                                                 <h4><a href="#">{{ product.name }}</a></h4>
                                                 <p>{{ quantity }} x {{ product.price }} €</p>
                                             </div>
-                                            <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                                            <a class="aa-remove-product" href="{{ path('app_cart_remove_product', {id: product.id}) }}"><span class="fa fa-times"></span></a>
                                         </li>
 
                                         {% set total = total + (quantity * product.price) %}
@@ -142,7 +142,7 @@
                                         Total
                                       </span>
                                       <span class="aa-cartbox-total-price">
-                                        {{ total }}€
+                                        {{ total }} €
                                       </span>
                                     </li>
                                 </ul>
