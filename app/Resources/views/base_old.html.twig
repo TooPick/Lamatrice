@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Lamatrice{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset("css/bootstrap.min.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/font-awesome.min.css") }}">
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Lamatrice Shop <i class="fa fa-shopping-cart" aria-hidden="true"></i></h1>
+            </header>
+            <div id="errors">
+                {% for label, flashes in app.session.flashbag.all %}
+                    {% for flash in flashes %}
+                        <div class="alert alert-{{ label }}">
+                            {{ flash }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            {% block body %}{% endblock %}
+        </div>
+        <script type="text/javascript" src="{{ asset("js/jquery-3.1.1.min.js") }}"></script>
+        <script src="{{ asset("js/bootstrap.min.js") }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
