@@ -156,10 +156,10 @@ class Cart
     public function setStatus($status)
     {
         if (!in_array($status, StatusTypeEnum::getAvailableTypes())) {
-            throw new \InvalidArgumentException("Statut inconnu");
+            throw new \InvalidArgumentException("Status inconnu");
         }
 
-        $this->type = $status;
+        $this->status = $status;
 
         return $this;
     }
