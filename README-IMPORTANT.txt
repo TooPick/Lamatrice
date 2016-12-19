@@ -19,6 +19,26 @@ Pour mettre à jour les dépendances si elle ont été modifiées
 
 :> php composer.phar update
 
+--------------------
+GENERATION DE LA BDD DE TEST
+--------------------
+Pour créer une base de donnée qui contient des données aléatoires :
+
+:> php bin/console doctrine:fixtures:load
+
+/!\ Attention ça supprime tout ce qui se trouve dans la bdd, si vous voulez conserver ce qu'il y a :
+
+:> php bin/console doctrine:fixtures:load --append
+
+Cela va créer 30 articles aléatoires et 2 utilisateurs :
+
+Un utilisateur simple :
+    - Identifiant : user
+    - MDP : test
+
+Un administrateur :
+    - Identifiant : admin
+    - MDP : test
 
 --------------------
 Gestion utilisateur
