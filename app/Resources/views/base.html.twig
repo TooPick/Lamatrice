@@ -74,7 +74,7 @@
                         <!-- / header top left -->
                         <div class="aa-header-top-right">
                             <ul class="aa-head-top-nav-right">
-                                <li><a href="#">Mon Compte</a></li>
+                                <li><a href="{{ path('user_account') }}">Mon Compte</a></li>
                                 <li class="hidden-xs"><a href="wishlist.html">Wishlist</a></li>
                                 {% if app.user == null %}
                                     <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
@@ -118,23 +118,23 @@
                                 {% endif %}
                             </a>
                             <div class="aa-cartbox-summary">
-                                {% set cart = getCurrentCart() %}
-                                {% set total = 0 %}
+                                {% set cartPopup = getCurrentCart() %}
+                                {% set totalPopup = 0 %}
                                 <ul>
-                                    {% for cartProduct in cart.cartProducts %}
-                                        {% set product = cartProduct.product %}
-                                        {% set quantity = cartProduct.quantity %}
+                                    {% for cartProductPopup in cartPopup.cartProducts %}
+                                        {% set productPopup = cartProductPopup.product %}
+                                        {% set quantityPopup = cartProductPopup.quantity %}
 
                                         <li>
                                             <a class="aa-cartbox-img" href="#"><img src="{{ asset("theme/img/woman-small-2.jpg") }}" alt="img"></a>
                                             <div class="aa-cartbox-info">
-                                                <h4><a href="#">{{ product.name }}</a></h4>
-                                                <p>{{ quantity }} x {{ product.price }} €</p>
+                                                <h4><a href="#">{{ productPopup.name }}</a></h4>
+                                                <p>{{ quantityPopup }} x {{ productPopup.price }} €</p>
                                             </div>
-                                            <a class="aa-remove-product" href="{{ path('app_cart_remove_product', {id: product.id}) }}"><span class="fa fa-times"></span></a>
+                                            <a class="aa-remove-product" href="{{ path('app_cart_remove_product', {id: productPopup.id}) }}"><span class="fa fa-times"></span></a>
                                         </li>
 
-                                        {% set total = total + (quantity * product.price) %}
+                                        {% set totalPopup = totalPopup + (quantityPopup * productPopup.price) %}
 
                                     {% endfor %}
                                     <li>
@@ -142,7 +142,7 @@
                                         Total
                                       </span>
                                       <span class="aa-cartbox-total-price">
-                                        {{ total }} €
+                                        {{ totalPopup }} €
                                       </span>
                                     </li>
                                 </ul>
