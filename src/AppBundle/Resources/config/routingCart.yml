@@ -1,3 +1,7 @@
+app_cart_show:
+    path:     /
+    defaults: { _controller: AppBundle:Cart:showCart }
+
 app_cart_add_product:
     path:     /add/product/{id}/{quantity}
     defaults: { _controller: AppBundle:Cart:addProduct, quantity: 1 }
