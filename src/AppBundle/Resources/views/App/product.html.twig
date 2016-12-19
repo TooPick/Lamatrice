@@ -1,0 +1,95 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}  
+  <!-- catg header banner section -->
+  <section id="aa-catg-head-banner">
+   <img src="http://lorempixel.com/250/300/cats" alt="fashion img">
+   <div class="aa-catg-head-banner-area">
+     <div class="container">
+      <div class="aa-catg-head-banner-content">
+        <h2>{{ product.name }}</h2>
+        <ol class="breadcrumb">
+          <li><a href="index.html">Home</a></li>         
+          <li><a href="{{ path("app_products_list", {type:product.category}) }}">{{product.category}}</a></li>
+          <li class="active">{{product.name}}</li>
+        </ol>
+      </div>
+     </div>
+   </div>
+  </section>
+  <!-- / catg header banner section -->
+
+  <!-- product category -->
+  <section id="aa-product-details">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-product-details-area">
+            <div class="aa-product-details-content">
+              <div class="row">
+                <!-- Modal view slider -->
+                <div class="col-md-5 col-sm-5 col-xs-12">                              
+                  <div class="aa-product-view-slider">                                
+                    <div id="demo-1" class="simpleLens-gallery-container">
+                      <div class="simpleLens-container">
+                        <div class="simpleLens-big-image-container"><a data-lens-image="img/view-slider/large/polo-shirt-1.png" class="simpleLens-lens-image"><img src="img/view-slider/medium/polo-shirt-1.png" class="simpleLens-big-image"></a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal view content -->
+                <div class="col-md-7 col-sm-7 col-xs-12">
+                  <div class="aa-product-view-content">
+                    <h3>{{ product.name }}</h3>
+                    <div class="aa-price-block">
+                      <span class="aa-product-view-price">{{ product.price }}</span>
+                      {% if product.quantity <= 0 %}
+                        <p class="aa-product-avilability">Avilability: <span>Epuisé</span></p>
+                      {% else %}
+                        <p class="aa-product-avilability">Avilability: <span>En stock</span></p>
+                      {% endif %}
+                    </div>
+                    <div class="aa-prod-quantity">
+                      <form action="">
+                        <select id="" name="">
+                          <option selected="1" value="0">1</option>
+                          <option value="1">2</option>
+                          <option value="2">3</option>
+                          <option value="3">4</option>
+                          <option value="4">5</option>
+                          <option value="5">6</option>
+                        </select>
+                      </form>
+                      <p class="aa-prod-category">
+                        Category: <a href="#">{{ product.category }}</a>
+                      </p>
+                    </div>
+                    <div class="aa-prod-view-bottom">
+                      <a class="aa-add-to-cart-btn" href="#">Add To Cart</a>
+                      <a class="aa-add-to-cart-btn" href="#">Wishlist</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="aa-product-details-bottom">
+              <ul class="nav nav-tabs" id="myTab2">
+                <li><a href="#description" data-toggle="tab">Description</a></li>                
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div class="tab-pane fade in active" id="description">
+                  <p>{{ product.description }}</p>
+                </div>
+              </div>            
+              </div>
+            </div>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / product category -->
+{% endblock %}
