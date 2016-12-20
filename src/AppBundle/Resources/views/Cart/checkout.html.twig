@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+
+  {% block body %}
+    <section id="aa-catg-head-banner">
+      <img src="http://lorempixel.com/1920/300/cats" alt="fashion img">
+      <div class="aa-catg-head-banner-area">
+        <div class="container">
+          <div class="aa-catg-head-banner-content">
+            <h2>Paiement</h2>
+            <ol class="breadcrumb">
+              <li><a href="{{ path('app_homepage') }}">Accueil</a></li>
+              <li class="active">Paiement</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cart-view">
+      <a href="{{ path('app_cart_checkout', {state: "validate"}) }}" class="aa-cart-view-btn">PAYER</a>
+    </section>
+  {% endblock %}

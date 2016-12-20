@@ -48,6 +48,7 @@
                                             <thead>
                                             <tr>
                                                 <th>N°</th>
+                                                <th>Etat</th>
                                                 <th>Nombre d'articles</th>
                                                 <th>Total</th>
                                                 <th>Actions</th>
@@ -61,6 +62,7 @@
                                                 {% endfor %}
                                                 <tr>
                                                     <td>Panier {{ cart.id }}</td>
+                                                    <td>{{ getStatusLabel(cart.status) }}</td>
                                                     <td>{{ cart.cartProducts|length }}</td>
                                                     <td>{{ totalValidated }} €</td>
                                                     <td><a class="aa-browse-btn" href="#">Voir</a></td>

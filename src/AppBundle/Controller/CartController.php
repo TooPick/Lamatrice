@@ -154,4 +154,39 @@ class CartController extends Controller
 
         return $this->redirectToRoute('app_homepage');
     }
+
+    public function checkoutAction($state)
+    {
+        $currentCartId = $this->get('session')->get('user_current_cart_id');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $cart = null;
+        if($currentCartId != null) {
+            $cartRepository = $em->getRepository('AppBundle:Cart');
+            $cart = $cartRepository->find($currentCartId);
+        }
+
+        if($cart == null) {
+            $this->get('session')->getFlashBag()->add('waning', "Attention le panier est vide.");
+            return $this->redirectToRoute('app_cart_show');
+        }
+
+        if($state == "validate") {
+
+            $cart->setValidated(true);
+            $em->persist($cart);
+            $em->flush();
+
+            $this->get('session')->set('user_current_cart_id', null);
+            $this->get('session')->getFlashBag()->add('success', "Le paiement a bien été validé, votre panier est en attente de la validation d'un magasinier.");
+
+            return $this->redirectToRoute('app_homepage');
+
+        } else {
+            return $this->render('AppBundle:Cart:checkout.html.twig', array(
+                'cart' => $cart,
+            ));
+        }
+    }
 }

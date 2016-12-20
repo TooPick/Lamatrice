@@ -24,3 +24,9 @@ app_cart_use:
 app_cart_save:
     path:     /save
     defaults: { _controller: AppBundle:Cart:saveCart }
+
+app_cart_checkout:
+    path:     /checkout/{state}
+    defaults: { _controller: AppBundle:Cart:checkout, state: null }
+    requirements:
+        state: null|validate
