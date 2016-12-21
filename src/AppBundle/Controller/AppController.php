@@ -15,11 +15,11 @@ class AppController extends Controller
     	
     	$productsStationery = $productRepository->findBy(array(
     		"category" => CategoryTypeEnum::TYPE_STATIONERY,
-    	), null, 9);
+    	), null, 8);
     	
     	$productsPlastic = $productRepository->findBy(array(
     		"category" => CategoryTypeEnum::TYPE_PLASTIC,
-    	), null, 9);
+    	), null, 8);
 
         return $this->render('AppBundle:App:index.html.twig', array(
         	'productsStationery' => $productsStationery,
