@@ -83,6 +83,26 @@ $(document).ready(function () {
                 $("#csv").after('<br><a href="/admin/product/stock">Retour à la liste</a>');
             };
             // start reading the file. When it is done, calls the onload event defined above.
+                
+	
+            if (FileReader.prototype.readAsBinaryString === undefined) {
+                FileReader.prototype.readAsBinaryString = function (fileData) {
+                var binary = "";
+                var pt = this;
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var bytes = new Uint8Array(reader.result);
+                    var length = bytes.byteLength;
+                    for (var i = 0; i < length; i++) {
+                        binary += String.fromCharCode(bytes[i]);
+                    }
+                    //pt.result  - readonly so assign content to another property
+                    pt.content = binary;
+                    $(pt).trigger('onload');
+                }
+                reader.readAsArrayBuffer(fileInput.files[0]);
+            }   
+}
                 reader.readAsBinaryString(fileInput.files[0]);
                 
             };
