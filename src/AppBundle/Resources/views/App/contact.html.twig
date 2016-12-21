@@ -1,95 +1,108 @@
 {% extends "::base.html.twig" %}
 
-{% block body %}      
+{% block body %}
     <!-- SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
     <!-- END SCROLL TOP BUTTON -->
 
- 
-  <!-- catg header banner section -->
-  <section id="aa-catg-head-banner">
-   <img src="http://lorempixel.com/1920/300/cats" alt="fashion img">
-   <div class="aa-catg-head-banner-area">
-     <div class="container">
-      <div class="aa-catg-head-banner-content">
-        <h2>Contact</h2>
-        <ol class="breadcrumb">
-          <li><a href={{ path("app_homepage") }}>Home</a></li>         
-          <li class="active">Contact</li>
-        </ol>
-      </div>
-     </div>
-   </div>
-  </section>
-  <!-- / catg header banner section -->
-<!-- start contact section -->
- <section id="aa-contact">
-   <div class="container">
-     <div class="row">
-       <div class="col-md-12">
-         <div class="aa-contact-area">
-           <div class="aa-contact-top">
-             <h2>Nous sommes là pour vous ...</h2>
-             <p>Lamatrice vous acceuille avec un grand choix de papeterie plastique. Pour toute question, n'hésitez pas, nos équipes sont là !</p>
-           </div>
-           <!-- contact map -->
-           <div class="aa-contact-map">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.9516252029916!2d5.4374452154841215!3d43.23147387913802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9b9adb8f06c67%3A0x909b2f1ed0fb048b!2sFacult%C3%A9+des+Sciences+de+Luminy!5e0!3m2!1sfr!2sfr!4v1482164103753" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-           </div>
-           <!-- Contact address -->
-           <div class="aa-contact-address">
-             <div class="row">
-               <div class="col-md-8">
-                 <div class="aa-contact-address-left">
-                   <form class="comments-form contact-form" action="">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">                        
-                          <input type="text" placeholder="Your Name" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">                        
-                          <input type="email" placeholder="Email" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                     <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">                        
-                          <input type="text" placeholder="Subject" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">                        
-                          <input type="text" placeholder="Company" class="form-control">
-                        </div>
-                      </div>
-                    </div>                  
-                     
-                    <div class="form-group">                        
-                      <textarea class="form-control" rows="3" placeholder="Message"></textarea>
-                    </div>
-                    <button class="aa-secondary-btn">Send</button>
-                  </form>
-                 </div>
-               </div>
-               <div class="col-md-4">
-                 <div class="aa-contact-address-right">
-                   <address>
-                     <h4>Lamatrice</h4>
-                     <p><span class="fa fa-home"></span>163 Avenue de Luminy, 13288 Marseille</p>
-                     <p><span class="fa fa-phone"></span>04 91 82 90 00</p>
-                     <p><span class="fa fa-envelope"></span>Email: support@lamatrice.com</p>
-                   </address>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </section>
 
+    <!-- catg header banner section -->
+    <section id="aa-catg-head-banner">
+        <img src="{{ asset('img/contact-header.png') }}" alt="fashion img">
+        <div class="aa-catg-head-banner-area">
+            <div class="container">
+                <div class="aa-catg-head-banner-content">
+                    <h2>Contact</h2>
+                    <ol class="breadcrumb">
+                        <li><a href={{ path("app_homepage") }}>Accueil</a></li>
+                        <li class="active">Contact</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / catg header banner section -->
+    <!-- start contact section -->
+    <section id="aa-contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-contact-area">
+                        <div class="aa-contact-top">
+                            <h2>Nous sommes là pour vous ...</h2>
+                            <p>Lamatrice vous accueille avec un grand choix de papeterie plastique. Pour toute question, n'hésitez pas, nos équipes sont là !</p>
+                        </div>
+                        <!-- contact map -->
+                        <div class="aa-contact-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.9516252029916!2d5.4374452154841215!3d43.23147387913802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9b9adb8f06c67%3A0x909b2f1ed0fb048b!2sFacult%C3%A9+des+Sciences+de+Luminy!5e0!3m2!1sfr!2sfr!4v1482164103753" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                        <!-- Contact address -->
+                        <div class="aa-contact-address">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="aa-contact-address-left">
+                                        <form id="contact-form" class="comments-form contact-form" action="#">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <input type="text" placeholder="Nom" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <input type="email" placeholder="Email" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <input type="text" placeholder="Sujet" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <input type="text" placeholder="Entreprise (optionnel)" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="3" placeholder="Message" required></textarea>
+                                            </div>
+                                            <button id="send-contact" class="aa-secondary-btn">Envoyer <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="aa-contact-address-right">
+                                        <address>
+                                            <h4>Lamatrice</h4>
+                                            <p><span class="fa fa-home"></span>163 Avenue de Luminy, 13288 Marseille</p>
+                                            <p><span class="fa fa-phone"></span>04 91 82 90 00</p>
+                                            <p><span class="fa fa-envelope"></span>Email: support@lamatrice.com</p>
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(function() {
+            $('#send-contact').on('click', function(e) {
+                e.preventDefault();
+
+                alert('Email de contact envoyé !');
+            });
+        });
+    </script>
 {% endblock %}

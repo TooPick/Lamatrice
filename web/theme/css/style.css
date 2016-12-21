@@ -3306,8 +3306,7 @@ img {
   float: left;
   width: 100% !important;
 }
-#aa-contact .aa-contact-area .aa-contact-address .aa-contact-address-left .comments-form button { 
-  width: 100px;
+#aa-contact .aa-contact-area .aa-contact-address .aa-contact-address-left .comments-form button {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;
