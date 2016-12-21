@@ -218,7 +218,7 @@ class CartController extends Controller
         }
 
         if($cart == null) {
-            $this->get('session')->getFlashBag()->add('waning', "Attention le panier est vide.");
+            $this->get('session')->getFlashBag()->add('warning', "Attention le panier est vide.");
             return $this->redirectToRoute('app_cart_show');
         }
 

@@ -10,14 +10,8 @@
     <link href="{{ asset("theme/css/font-awesome.css") }}" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="{{ asset("theme/css/bootstrap.css") }}" rel="stylesheet">
-    <!-- SmartMenus jQuery Bootstrap Addon CSS -->
-    <link href="{{ asset("theme/css/jquery.smartmenus.bootstrap.css") }}" rel="stylesheet">
     <!-- Product view slider -->
     <link rel="stylesheet" type="text/css" href="{{ asset("theme/css/jquery.simpleLens.css") }}">
-    <!-- slick slider -->
-    <link rel="stylesheet" type="text/css" href="{{ asset("theme/css/slick.css") }}">
-    <!-- price picker slider -->
-    <link rel="stylesheet" type="text/css" href="{{ asset("theme/css/nouislider.css") }}">
     <!-- Theme color -->
     <link id="switcher" href="{{ asset("theme/css/theme-color/default-theme.css") }}" rel="stylesheet">
     <!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
@@ -197,14 +191,17 @@
 </section>
 <!-- / menu -->
 
-<div id="errors" class="row">
-    {% for label, flashes in app.session.flashbag.all %}
-        {% for flash in flashes %}
-            <div class="alert alert-{{ label }}">
-                {{ flash }}
-            </div>
+
+<div id="errors">
+    <div class="container">
+        {% for label, flashes in app.session.flashbag.all %}
+            {% for flash in flashes %}
+                <div class="alert alert-{{ label }}">
+                    {{ flash }}
+                </div>
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
+    </div>
 </div>
 
 {% block body %}{% endblock %}
@@ -264,17 +261,9 @@
 <script src={{ asset("js/jquery-2.2.4.min.js") }}></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ asset("theme/js/bootstrap.js") }}"></script>
-<!-- SmartMenus jQuery plugin -->
-<script type=text/javascript" src="{{ asset("theme/js/jquery.smartmenus.js") }}"></script>
-<!-- SmartMenus jQuery Bootstrap Addon -->
-<script type="text/javascript" src="{{ asset("theme/js/jquery.smartmenus.bootstrap.js") }}"></script>
 <!-- Product view slider -->
 <script type="text/javascript" src="{{ asset("theme/js/jquery.simpleGallery.js") }}"></script>
 <script type="text/javascript" src="{{ asset("theme/js/jquery.simpleLens.js") }}"></script>
-<!-- slick slider -->
-<script type="text/javascript" src="{{ asset("theme/js/slick.js") }}"></script>
-<!-- Price picker slider -->
-<script type="text/javascript" src="{{ asset("theme/js/nouislider.js") }}"></script>
 <!-- Custom js -->
 <script src="{{ asset("theme/js/custom.js") }}"></script>
 {% block javascripts %}{% endblock %}
