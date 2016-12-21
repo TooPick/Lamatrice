@@ -22,7 +22,9 @@
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
+                {% if path[path|length-1] == "edit" %}
+                    <input type="submit" value="Supprimer">
+                {% endif %}
             {{ form_end(delete_form) }}
         </li>
     </ul>
