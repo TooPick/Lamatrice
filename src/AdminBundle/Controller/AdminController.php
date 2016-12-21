@@ -9,12 +9,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AdminController extends Controller
 {
+    /**
+     * Affiche l'index du menu administrateur.
+     **/
     public function indexAction()
     {
         return $this->render('AdminBundle:Admin:index.html.twig');
     }
 
-    //Affiche liste des paniers validés
+    /**
+     * Affiche la liste de tous les paniers validés par les utilisateurs, c'est à dire les paniers que l'utilisateur à "payés"
+    **/
     public function panierValidateAction(){
         $em = $this->getDoctrine()->getManager();
         $panier_repo = $em->getRepository("AppBundle:Cart");
@@ -26,7 +31,9 @@ class AdminController extends Controller
         ));
     }
 
-    //Affiche liste des paniers en traitement
+    /**
+     * Affiche la liste de tous les paniers que l'administrateur a décidé de mettre en cours de traitement
+     **/
     public function panierBeeingTreatedAction(){
         $em = $this->getDoctrine()->getManager();
         $panier_repo = $em->getRepository("AppBundle:Cart");
@@ -38,8 +45,9 @@ class AdminController extends Controller
         ));
     }
 
-
-    //Affiche liste traités
+    /**
+     * Affiche la liste de tous les paniers traités par l'administrateur.
+     **/
     public function panierTreatedAction(){
         $em = $this->getDoctrine()->getManager();
         $panier_repo = $em->getRepository("AppBundle:Cart");
@@ -51,6 +59,9 @@ class AdminController extends Controller
         ));
     }
 
+    /**
+     * Prend un panier en parametre et change le status du panier en " en cours de traitement "
+     **/
     public function beeingtraitedPanierAction(Cart $panier){
         $panier->setStatus(StatusTypeEnum::TYPE_BEING_PROCESSED);
         $em = $this->getDoctrine()->getManager();
@@ -60,7 +71,9 @@ class AdminController extends Controller
         return $this->redirectToRoute('admin_panierValidate');
     }
 
-    //passe un panier en validé
+    /**
+     * Prend un panier en parametre et change le status en validé uniquement, si le nombre d'objets en stock est suffisant.
+     **/
     public function traitePanierAction(Cart $panier){
 
         $objets = $panier->getCartProducts();
