@@ -1130,9 +1130,6 @@ img {
   border: none;
   background-color: inherit;
 }
-.aa-product-catg {
-  margin-left: -54px;
-}
 .aa-product-catg li {
   display: block;
   float: left;
@@ -2056,9 +2053,6 @@ img {
   float: left;
   width: 100%;
   margin-top: 30px;
-}
-#aa-product-category .aa-product-catg-content .aa-product-catg-body .aa-product-catg {
-  margin-left: -30px;
 }
 #aa-product-category .aa-product-catg-content .aa-product-catg-body .aa-product-catg li {
   margin: 0 0 20px 30px;
