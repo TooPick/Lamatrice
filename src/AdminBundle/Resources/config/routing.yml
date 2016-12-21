@@ -22,6 +22,6 @@ admin_panierTreated:
 
 admin_panier_beeing_traited:
     path:   /panier/beeingTreated/{id}
-    defaults: { _controller: AdminBundle:Admin:beeingtraitePanier }
+    defaults: { _controller: AdminBundle:Admin:beeingtraitedPanier }
     requirements:
         id: \d+
