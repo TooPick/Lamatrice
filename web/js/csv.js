@@ -69,18 +69,19 @@ $(document).ready(function () {
                     tabCsv['"'+csvS[j]+'"'] = csvS[j+3]; 
                 }
                 //console.log(tabCsv);
-                $("th[aria-label='Quantité*']").html("Différence Quantité");
                 for ( var k in tabCsv){
                     if ( tabComp.hasOwnProperty(k)){
                         var ind = k.replace(/["]/g,'');
                         var diff = tabCsv[k]-tabComp[k];
-                        $('a[href="/admin/product/'+ind+'/show"]').parent().nextAll().slice(2, 3).html(diff);
+                        $('a[href*="/admin/product/'+ind+'/show"]').parent().nextAll().slice(2, 3).html(diff);
                         
                     }
                 }
                 $("#cmp").remove();
                 $("#fileCsv").remove();
-                $("#csv").after('<br><a href="/admin/product/stock">Retour à la liste</a>');
+                var path = "{{ path('admin_product_stock') }}";
+                $("#csv").after('<br><a id="retour" href="">Retour à la liste</a>');
+                $("#retour").pop("href",path);
             };
             // start reading the file. When it is done, calls the onload event defined above.
                 
