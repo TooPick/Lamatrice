@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Enum\CategoryTypeEnum;
 use AppBundle\Entity\Product;
+use Symfony\Component\HttpFoundation\Request;
 
 class AppController extends Controller
 {
@@ -28,6 +29,24 @@ class AppController extends Controller
         	'productsPlastic' => $productsPlastic,
         ));
     }
+
+	public function searchAction(Request $request) {
+		$searchTerm = $request->get('search-term');
+
+		if(count($searchTerm) <= 0) {
+			return $this->redirectToRoute('app_homepage');
+		}
+
+		$em = $this->getDoctrine()->getManager();
+		$productRepository = $em->getRepository('AppBundle:Product');
+
+		$products = $productRepository->search($searchTerm);
+
+		return $this->render('AppBundle:App:searchProductsList.html.twig', array(
+			'searchTerm' => $searchTerm,
+			'products' => $products,
+		));
+	}
 
     public function productsListAction($type) {
     	$em = $this->getDoctrine()->getManager();

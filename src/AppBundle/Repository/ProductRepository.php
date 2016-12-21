@@ -10,4 +10,18 @@ namespace AppBundle\Repository;
  */
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function search($term) {
+        $term = strtolower($term);
+
+        $results = $this->createQueryBuilder('p')
+            ->select('p')
+            ->where('LOWER(p.name) LIKE :search')
+            ->orWhere('LOWER(p.reference) LIKE :search')
+            ->orWhere('LOWER(p.description) LIKE :search')
+            ->setParameter(':search', "%$term%")
+            ->getQuery()
+            ->getResult();
+
+        return $results;
+    }
 }
