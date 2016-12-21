@@ -2,10 +2,13 @@
 
 {% block body %}
     <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/media/css/jquery.dataTables.min.css') }}">
+    <script src="{{ asset('DataTables/media/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/csv.js') }}"></script>
+    
     <h1>Liste des stocks</h1>
 
-    <table id ="stock" class="table table-striped">
+    <table id ="stock" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Id</th>
@@ -33,5 +36,13 @@
         {% endfor %}
         </tbody>
     </table>
-    <a id="csv" href="#" >Exporter</a>
+        <a id="csv" href="#" >Exporter</a></br></br>
+    <input id="fileCsv" type="file"  id="file_upload" /> <a id="cmp" href="#" >Comparer</a>
+    <script> 
+        $('#stock').DataTable({
+            "language": {
+                "url": "{{ asset('DataTables/French.json') }}"
+            }
+        });
+    </script>
 {% endblock %}
