@@ -1,15 +1,20 @@
 {% extends "UserBundle::layout.html.twig" %}
 
-{% block fos_user_content %}
+{%  block title_header %}Edition du profil{% endblock %}
 
-    <h3>Edition du profil</h3>
+{%  block breadcrumb %}
+    <li><a href="{{  path('user_account') }}">Mon Compte</a></li>
+    <li class="active">Edition du profil</li>
+{% endblock %}
+
+{% block fos_user_content %}
 
     <div class="row">
         {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-            {{ form_widget(form) }}
-            <div>
-                <input class="aa-browse-btn" type="submit" value="Enregistrer" />
-            </div>
+        {{ form_widget(form) }}
+        <div>
+            <input class="aa-browse-btn" type="submit" value="Enregistrer" />
+        </div>
         {{ form_end(form) }}
     </div>
 

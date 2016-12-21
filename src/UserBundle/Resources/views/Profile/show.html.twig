@@ -2,94 +2,81 @@
 
 {% block fos_user_content %}
 
-    <section id="aa-myaccount">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="aa-myaccount-area">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="aa-myaccount-register">
-                                        <h4>Mes paniers non validés</h4>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="aa-myaccount-register">
+                <h4>Mes paniers non validés</h4>
 
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>N°</th>
-                                                    <th>Nombre d'articles</th>
-                                                    <th>Total</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {% for cart in unvalidatedCarts %}
-                                                    {% set totalValidated = 0 %}
-                                                    {% for cartProduct in cart.cartProducts %}
-                                                        {% set totalValidated = totalValidated + (cartProduct.quantity * cartProduct.product.price) %}
-                                                    {% endfor %}
-                                                    <tr>
-                                                        <td>Panier {{ cart.id }}</td>
-                                                        <td>{{ cart.cartProducts|length }}</td>
-                                                        <td>{{ totalValidated }} €</td>
-                                                        <td><a class="aa-browse-btn" href="{{ path('app_cart_preview', {id: cart.id}) }}">Voir</a> <a class="aa-browse-btn" href="{{ path('app_cart_use', {id: cart.id}) }}">Utiliser</a> <a class="aa-browse-btn" href="{{ path('app_cart_delete', {id: cart.id}) }}">Sup</a></td>
-                                                    </tr>
-                                                {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="aa-myaccount-register">
-                                        <h4>Mes paniers validés</h4>
-
-                                        <table class="table table-bordered">
-                                            <thead>
-                                            <tr>
-                                                <th>N°</th>
-                                                <th>Etat</th>
-                                                <th>Nombre d'articles</th>
-                                                <th>Total</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {% for cart in validatedCarts %}
-                                                {% set totalValidated = 0 %}
-                                                {% for cartProduct in cart.cartProducts %}
-                                                    {% set totalValidated = totalValidated + (cartProduct.quantity * cartProduct.product.price) %}
-                                                {% endfor %}
-                                                <tr>
-                                                    <td>Panier {{ cart.id }}</td>
-                                                    <td>{{ getStatusLabel(cart.status) }}</td>
-                                                    <td>{{ cart.cartProducts|length }}</td>
-                                                    <td>{{ totalValidated }} €</td>
-                                                    <td><a class="aa-browse-btn" href="{{ path('app_cart_preview', {id: cart.id}) }}">Voir</a></td>
-                                                </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="aa-myaccount-login">
-                                    <h4>Mes informations</h4>
-
-                                    <p>Nom d'utilisateur : {{ user.username }}</p>
-                                    <p>Adresse email : {{ user.email }}</p>
-
-                                    <p><a class="aa-browse-btn" href="{{ path('fos_user_profile_edit') }}">Modifier mes informations<span class="fa fa-long-arrow-right"></span></a></p>
-                                    <p><a class="aa-browse-btn" href="{{ path('fos_user_change_password') }}">Modifier mon mot de passe<span class="fa fa-long-arrow-right"></span></a></p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombre d'articles</th>
+                        <th>Total</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cart in unvalidatedCarts %}
+                        {% set totalValidated = 0 %}
+                        {% for cartProduct in cart.cartProducts %}
+                            {% set totalValidated = totalValidated + (cartProduct.quantity * cartProduct.product.price) %}
+                        {% endfor %}
+                        <tr>
+                            <td>Panier {{ cart.id }}</td>
+                            <td>{{ cart.cartProducts|length }}</td>
+                            <td>{{ totalValidated }} €</td>
+                            <td><a class="aa-browse-btn" href="{{ path('app_cart_preview', {id: cart.id}) }}">Voir</a> <a class="aa-browse-btn" href="{{ path('app_cart_use', {id: cart.id}) }}">Utiliser</a> <a class="aa-browse-btn" href="{{ path('app_cart_delete', {id: cart.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
-    </section>
+
+        <div class="row">
+            <div class="aa-myaccount-register">
+                <h4>Mes paniers validés</h4>
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Etat</th>
+                        <th>Nombre d'articles</th>
+                        <th>Total</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cart in validatedCarts %}
+                        {% set totalValidated = 0 %}
+                        {% for cartProduct in cart.cartProducts %}
+                            {% set totalValidated = totalValidated + (cartProduct.quantity * cartProduct.product.price) %}
+                        {% endfor %}
+                        <tr>
+                            <td>Panier {{ cart.id }}</td>
+                            <td>{{ getStatusLabel(cart.status) }}</td>
+                            <td>{{ cart.cartProducts|length }}</td>
+                            <td>{{ totalValidated }} €</td>
+                            <td><a class="aa-browse-btn" href="{{ path('app_cart_preview', {id: cart.id}) }}">Voir</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="aa-myaccount-login">
+            <h4>Mes informations</h4>
+
+            <p>Nom d'utilisateur : {{ user.username }}</p>
+            <p>Adresse email : {{ user.email }}</p>
+
+            <p><a class="aa-browse-btn" href="{{ path('fos_user_profile_edit') }}">Modifier mes informations<span class="fa fa-long-arrow-right"></span></a></p>
+            <p><a class="aa-browse-btn" href="{{ path('fos_user_change_password') }}">Modifier mon mot de passe<span class="fa fa-long-arrow-right"></span></a></p>
+        </div>
+    </div>
 
 {% endblock fos_user_content %}

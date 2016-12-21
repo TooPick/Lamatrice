@@ -1,4 +1,11 @@
 /*
+AJOUT LAMATRICE
+*/
+.colored {
+  color: #ff6666;
+}
+
+/*
   Template Name: Daily Shop
   Author : MarkUps
   Author URI: http://www.markups.io/
@@ -2616,7 +2623,7 @@ img {
 #aa-myaccount .aa-myaccount-area {
   display: inline;
   float: left;
-  padding: 100px 0;
+  padding: 50px 0;
   width: 100%;
 }
 #aa-myaccount .aa-myaccount-area h4 {
