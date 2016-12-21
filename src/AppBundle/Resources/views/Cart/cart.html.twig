@@ -52,7 +52,7 @@
                         <td><a class="aa-cart-title" href="{{ path('app_product_show', {id: product.id}) }}">{{ product.name }}</a></td>
                         <td>{{ product.price }} €</td>
                         <td>{{ quantity }}</td>
-                        <td>{{ product.price * quantity}} €</td>
+                        <td>{{ totalProductPrice }} €</td>
                       </tr>
                     {% endfor %}
                     </tbody>
