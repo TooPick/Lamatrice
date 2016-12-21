@@ -1,0 +1,7 @@
+A
+{% extends "::base.html.twig" %}
+AB
+{% block body %}
+    <h2>AdminBundle - Home </h2>
+    Test
+{% endblock %}

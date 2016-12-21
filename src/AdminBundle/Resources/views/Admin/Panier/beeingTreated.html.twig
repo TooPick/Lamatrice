@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<h2>AdminBundle - Liste des Paniers en cours de traitement</h2>
+
+    <div class=".table-striped">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Contenu du panier</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for panier in paniers %}
+                <tr>
+                    <td>
+                        {% for cartProduct in panier.cartProducts %}
+                            <table>{{ cartProduct.product.name  }}</table>
+                        {% endfor %}
+                    </td>
+                    <td>{{ getStatusLabel(panier.status) }}</td>                                                                      <!--CHOPER ENUM -->
+                    <td> <a href="{{ path('admin_panier_treat',{id:panier.id}) }}"><span class="glyphicon glyphicon-ok"></span></a> /
+                        <a href="{{ path('admin_panier_beeing_traited',{id:panier.id}) }}"><span class="gglyphicon glyphicon-hourglass"></span></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{{ path('admin_panierValidate') }}">Revenir à la liste des paniers</a></br>
+    <a href="{{ path('admin_homepage') }}">Revenir au menu Admin</a>
+
+{% endblock %}
+
+

@@ -1,3 +1,27 @@
 admin_homepage:
     path:     /
     defaults: { _controller: AdminBundle:Admin:index }
+
+admin_panierValidate:
+    path:     /panier
+    defaults: { _controller: AdminBundle:Admin:panierValidate }
+
+admin_panier_treat:
+    path:     /panier/treat/{id}
+    defaults: { _controller: AdminBundle:Admin:traitePanier }
+    requirements:
+        id: \d+
+
+admin_panierBeeingTreated:
+    path:     /panier/panierBeeingTreatedAction
+    defaults: { _controller: AdminBundle:Admin:panierBeeingTreated }
+
+admin_panierTreated:
+    path:     /panier/treated
+    defaults: { _controller: AdminBundle:Admin:panierTreated }
+
+admin_panier_beeing_traited:
+    path:   /panier/beeingTreated/{id}
+    defaults: { _controller: AdminBundle:Admin:beeingtraitePanier }
+    requirements:
+        id: \d+
