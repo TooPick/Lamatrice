@@ -79,6 +79,10 @@ class CartController extends Controller
                 return $this->redirectToRoute('app_homepage');
             }
 
+            if(!$product->getVisible()) {
+                throw $this->createNotFoundException('Erreur: Produit introuvable.');
+            }
+
             if($product->getQuantity() <= 0)
                 $this->get('session')->getFlashBag()->add('warning', "Attention, ce produit est en rupture de stocks, il n'a pas été ajouté au panier.");
             else {
