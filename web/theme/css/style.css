@@ -3387,6 +3387,7 @@ img {
   display: inline;
   float: left;
   width: 100%;
+  margin-top: 50px;
 }
 #aa-footer .aa-footer-top {
   display: inline;
