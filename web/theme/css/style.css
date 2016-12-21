@@ -1,4 +1,11 @@
 /*
+AJOUT LAMATRICE
+*/
+.colored {
+  color: #ff6666;
+}
+
+/*
   Template Name: Daily Shop
   Author : MarkUps
   Author URI: http://www.markups.io/
@@ -1047,23 +1054,12 @@ img {
   width: 100%;
 }
 
-#aa-product .aa-product-area .aa-product-inner #men {
+#aa-product .aa-product-area .aa-product-inner #stationery {
 	margin-left: -55px;
   text-align: center;
   padding-bottom: 35px;
 }
-#aa-product .aa-product-area .aa-product-inner #electronics {
-	margin-left: -55px;
-  text-align: center;
-  padding-bottom: 35px;
-}
-#aa-product .aa-product-area .aa-product-inner #women {
-	margin-left: -55px;
-  text-align: center;
-  padding-bottom: 35px;
-}
-
-#aa-product .aa-product-area .aa-product-inner #sports {
+#aa-product .aa-product-area .aa-product-inner #plastic {
 	margin-left: -55px;
   text-align: center;
   padding-bottom: 35px;
@@ -2616,7 +2612,7 @@ img {
 #aa-myaccount .aa-myaccount-area {
   display: inline;
   float: left;
-  padding: 100px 0;
+  padding: 50px 0;
   width: 100%;
 }
 #aa-myaccount .aa-myaccount-area h4 {
@@ -3306,8 +3302,7 @@ img {
   float: left;
   width: 100% !important;
 }
-#aa-contact .aa-contact-area .aa-contact-address .aa-contact-address-left .comments-form button { 
-  width: 100px;
+#aa-contact .aa-contact-area .aa-contact-address .aa-contact-address-left .comments-form button {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;
@@ -3387,6 +3382,7 @@ img {
   display: inline;
   float: left;
   width: 100%;
+  margin-top: 50px;
 }
 #aa-footer .aa-footer-top {
   display: inline;

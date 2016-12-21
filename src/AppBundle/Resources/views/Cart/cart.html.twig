@@ -3,7 +3,7 @@
   {% block body %}
     <!-- catg header banner section -->
     <section id="aa-catg-head-banner">
-      <img src="http://lorempixel.com/1920/300/cats" alt="fashion img">
+      <img src="{{ asset('img/cart-header.png') }}" alt="fashion img">
       <div class="aa-catg-head-banner-area">
         <div class="container">
           <div class="aa-catg-head-banner-content">
@@ -69,7 +69,7 @@
                     </tr>
                     </tbody>
                   </table>
-                  <a href="{{ path('app_cart_save') }}" class="aa-cart-view-btn">Sauvegarder pour plus tard</a><a href="{{ path('app_cart_checkout') }}" class="aa-cart-view-btn">Procéder au paiement</a>
+                  <a href="{{ path('app_cart_save') }}" class="aa-cart-view-btn">Sauvegarder pour plus tard <i class="fa fa-floppy-o" aria-hidden="true"></i></a><a href="{{ path('app_cart_checkout') }}" class="aa-cart-view-btn">Procéder au paiement <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                 </div>
               </div>
             </div>

@@ -36,7 +36,7 @@ class Cart
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CartProduct", mappedBy="cart")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\CartProduct", mappedBy="cart", cascade={"remove"})
      */
     private $cartProducts;
 

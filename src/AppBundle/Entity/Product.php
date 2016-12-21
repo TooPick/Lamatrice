@@ -84,6 +84,13 @@ class Product
      */
     private $picture;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="visible", type="boolean")
+     */
+    private $visible = true;
+
 
     /**
      * Get id
@@ -313,5 +320,29 @@ class Product
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    /**
+     * Set visible
+     *
+     * @param boolean $visible
+     *
+     * @return Product
+     */
+    public function setVisible($visible)
+    {
+        $this->visible = $visible;
+
+        return $this;
+    }
+
+    /**
+     * Get visible
+     *
+     * @return boolean
+     */
+    public function getVisible()
+    {
+        return $this->visible;
     }
 }

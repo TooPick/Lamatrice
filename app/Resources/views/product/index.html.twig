@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/media/css/jquery.dataTables.min.css') }}">
+    <script src="{{ asset('DataTables/media/js/jquery.dataTables.min.js') }}"></script>
+    <h1>Liste des produits</h1>
+    
+    <table id ="liste" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reference</th>
+                <th>Nom</th>
+                <th>Categorie</th>
+                <th>Quantité</th>
+                <th>Alerte quantité</th>
+                <th>Prix</th>
+                <th>Date d'expiration</th>
+                <th>Visible</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td><a href="{{ path('admin_product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                <td>{{ product.reference }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.quantityAlert }}</td>
+                <td>{{ product.price }}</td>
+                <td>{% if product.expirationDate %}{{ product.expirationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+               {% if product.visible == 1 %}
+                    <td>Visible</td>
+                {% else %}
+                    <td>Non visible</td>
+                {% endif %}
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_product_show', { 'id': product.id }) }}">Infos</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_product_edit', { 'id': product.id }) }}">Modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_product_new') }}">Rajouter un produit</a>
+        </li>
+    </ul>
+    <script> 
+        $('#liste').DataTable({
+            "language": {
+                "url": "{{ asset('DataTables/French.json') }}"
+            }
+        });
+    </script>
+{% endblock %}

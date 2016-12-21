@@ -32,6 +32,17 @@ class CartController extends Controller
         ));
     }
 
+    public function previewCartAction(Cart $cart)
+    {
+        $user = $this->getUser();
+        if($cart->getUser() != $user)
+            throw $this->createNotFoundException('Erreur : Panier introuvable.');
+
+        return $this->render('AppBundle:Cart:preview.html.twig', array(
+            'cart' => $cart,
+        ));
+    }
+
     public function addProductAction(Product $product, $quantity)
     {
         $currentCartId = $this->get('session')->get('user_current_cart_id');
@@ -45,7 +56,7 @@ class CartController extends Controller
 
             $cart = $cartRepository->find($currentCartId);
 
-            if($cart->getValidated()) {
+            if($cart == null || $cart->getValidated()) {
                 $cart = null;
             }
         }
@@ -63,6 +74,11 @@ class CartController extends Controller
         }
 
         if($cart != null) {
+            if($cart->getValidated()) {
+                $this->get('session')->getFlashBag()->add('warning', "Le panier choisi a déjà été validé.");
+                return $this->redirectToRoute('app_homepage');
+            }
+
             if($product->getQuantity() <= 0)
                 $this->get('session')->getFlashBag()->add('warning', "Attention, ce produit est en rupture de stocks, il n'a pas été ajouté au panier.");
             else {
@@ -110,6 +126,11 @@ class CartController extends Controller
             $cart = $cartRepository->find($currentCartId);
 
             if($cart != null) {
+                if($cart->getValidated()) {
+                    $this->get('session')->getFlashBag()->add('warning', "Le panier choisi a déjà été validé.");
+                    return $this->redirectToRoute('app_homepage');
+                }
+
                 $cartProductRepository = $em->getRepository('AppBundle:CartProduct');
                 $cartProduct = $cartProductRepository->findOneBy(array(
                     'cart' => $cart,
@@ -121,6 +142,11 @@ class CartController extends Controller
                     $em->flush();
 
                     $this->get('session')->getFlashBag()->add('success', "Le produit a bien été retiré du panier.");
+
+                    if(count($cart->getCartProducts()) <= 0) {
+                        $em->remove($cart);
+                        $em->flush();
+                    }
                 }
             }
         }
@@ -155,6 +181,26 @@ class CartController extends Controller
         return $this->redirectToRoute('app_homepage');
     }
 
+    public function deleteCartAction(Cart $cart)
+    {
+        $user = $this->getUser();
+        if($cart->getUser() != $user)
+            throw $this->createNotFoundException("Erreur : Panier introuvable.");
+
+        if($cart->getValidated()) {
+            $this->get('session')->getFlashBag()->add('warning', "Vous ne pouvez pas supprimer un panier qui a déjà été validé.");
+
+        } else {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($cart);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add('success', "Le panier a bien été supprimé.");
+        }
+
+        return $this->redirectToRoute('user_account');
+    }
+
     public function checkoutAction($state)
     {
         $currentCartId = $this->get('session')->get('user_current_cart_id');
@@ -170,6 +216,11 @@ class CartController extends Controller
         if($cart == null) {
             $this->get('session')->getFlashBag()->add('waning', "Attention le panier est vide.");
             return $this->redirectToRoute('app_cart_show');
+        }
+
+        if($cart->getValidated()) {
+            $this->get('session')->getFlashBag()->add('warning', "Le panier choisi a déjà été validé.");
+            return $this->redirectToRoute('app_homepage');
         }
 
         if($state == "validate") {

@@ -1,53 +1,72 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-  	<!-- Products section -->
+
 	<section id="aa-product">
-	<div class="container">
-	  <div class="row">
-	    <div class="col-md-12">
-	      <div class="row">
-	        <div class="aa-product-area">
-	          <div class="aa-product-inner">
-	            <!-- start prduct navigation -->
-	             <ul class="nav nav-tabs aa-products-tab">
-	                <li class="active"><a href="#stationery" data-toggle="tab">Papeterie</a></li>
-	                <li><a href="#plastic" data-toggle="tab">Plastique</a></li>
-	              </ul>
-	              <!-- Tab panes -->
-	              <div class="tab-content">
-	                <!-- Start men product category -->
-	                <div class="tab-pane fade in active text-center" id="stationery">
-	                  <ul class="aa-product-catg">
-	                    <!-- start single product item -->
-	                    {% for product in productsStationery %}
-	            			{% include "AppBundle:App:productHome.html.twig" %} 
-	            		{% endfor %}
-	                  </ul>
-	                  <div class="text-center">
-	                  	<a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
-	                  </div>
-	                </div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="aa-product-area">
+							<div class="aa-product-inner">
 
-	                <div class="tab-pane fade" id="plastic">
-	                  <ul class="aa-product-catg">
-	                    <!-- start single product item -->
-	                    {% for product in productsPlastic %}
-	            			{% include "AppBundle:App:productHome.html.twig" %} 
-	            		{% endfor %}
-	                  </ul>
-	                  <div class="text-center">
-	                  	<a class="aa-browse-btn" href="#">Browse all Product<span class="fa fa-long-arrow-right"></span></a>
-	                  </div>
-	               </div>
+								<ul class="nav nav-tabs aa-products-tab">
+									<li class="active"><a href="#stationery" data-toggle="tab">Papeterie</a></li>
+									<li><a href="#plastic" data-toggle="tab">Plastique</a></li>
+								</ul>
 
-	              </div>
-	              
+								<div class="tab-content">
+									<div class="tab-pane fade in active text-center" id="stationery">
+										<ul class="aa-product-catg">
+											{% for product in productsStationery %}
+												{% include "AppBundle:App:homeProductElement.html.twig" %}
+												{% include "AppBundle:App:productPreviewModal.html.twig" %}
+											{% endfor %}
+										</ul>
+										<div class="text-center">
+											<a class="aa-browse-btn" href="{{ path('app_products_list', {type: 'stationery'}) }}">Voir tous les produits <span class="fa fa-long-arrow-right"></span></a>
+										</div>
+									</div>
 
-	          </div>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+									<div class="tab-pane fade" id="plastic">
+										<ul class="aa-product-catg">
+											{% for product in productsPlastic %}
+												{% include "AppBundle:App:homeProductElement.html.twig" %}
+												{% include "AppBundle:App:productPreviewModal.html.twig" %}
+											{% endfor %}
+										</ul>
+										<div class="text-center">
+											<a class="aa-browse-btn" href="{{ path('app_products_list', {type: 'plastic'}) }}">Voir tous les produits <span class="fa fa-long-arrow-right"></span></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript">
+		$(function() {
+			var pathAddToCart = "{{ path('app_cart_show') }}";
+
+			$('.add-to-cart').on('click', function(e) {
+				e.preventDefault();
+
+				var productId = $(this).attr('data-product');
+				var quantity = $('.modal-product-' + productId + ' #product-quantity').val();
+
+				if(quantity > 0) {
+					window.location.replace(pathAddToCart + "add/product/" + productId + "/" + quantity);
+				}
+
+			});
+		});
+	</script>
 {% endblock %}
