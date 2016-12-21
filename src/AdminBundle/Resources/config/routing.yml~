@@ -1,0 +1,7 @@
+admin_homepage:
+    path:     /
+    defaults: { _controller: AdminBundle:Admin:index }
+
+admin_panier_view:
+    path: /panier_view/
+    defaults: { _controller: AdminBundle:Admin:Panier:panier }
