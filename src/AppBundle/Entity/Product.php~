@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Enum\CategoryTypeEnum;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -82,6 +83,13 @@ class Product
      * @ORM\Column(name="picture", type="string", length=255, nullable=true)
      */
     private $picture;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="visible", type="boolean")
+     */
+    private $visible = true;
 
 
     /**
@@ -164,6 +172,34 @@ class Product
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     *
+     * @return Product
+     */
+    public function setCategory($category)
+    {
+        if (!in_array($category, CategoryTypeEnum::getAvailableTypes())) {
+            throw new \InvalidArgumentException("Catégorie Invalide");
+        }
+
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 
     /**

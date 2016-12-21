@@ -14,3 +14,11 @@ services:
             container: "@service_container"
           tags:
               - { name: twig.extension }
+
+    product.twig_extension:
+              class:  AppBundle\Twig\ProductExtension
+              arguments:
+                doctrine: "@doctrine"
+                container: "@service_container"
+              tags:
+                  - { name: twig.extension }

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Twig;
 
+use AppBundle\Enum\StatusTypeEnum;
 use Symfony\Component\DependencyInjection\Container;
 use AppBundle\Entity\Cart;
 
@@ -26,6 +27,7 @@ class CartExtension extends \Twig_Extension {
         return [
             new \Twig_SimpleFunction('getCurrentCart', [$this, 'getCurrentCart'], ['is_safe' => ['html']]),
             new \Twig_SimpleFunction('getCartProductsNumber', [$this, 'getCartProductsNumber'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('getStatusLabel', [$this, 'getStatusLabel'], ['is_safe' => ['html']]),
         ];
     }
 
@@ -64,5 +66,10 @@ class CartExtension extends \Twig_Extension {
             $count += $product->getQuantity();
 
         return $count;
+    }
+
+    public function getStatusLabel($name)
+    {
+        return StatusTypeEnum::getTypeName($name);
     }
 }

@@ -2,6 +2,12 @@ app_cart_show:
     path:     /
     defaults: { _controller: AppBundle:Cart:showCart }
 
+app_cart_preview:
+    path:     /preview/{id}
+    defaults: { _controller: AppBundle:Cart:previewCart }
+    requirements:
+        id: \d+
+
 app_cart_add_product:
     path:     /add/product/{id}/{quantity}
     defaults: { _controller: AppBundle:Cart:addProduct, quantity: 1 }
@@ -14,3 +20,25 @@ app_cart_remove_product:
     defaults: { _controller: AppBundle:Cart:removeProduct }
     requirements:
         id: \d+
+
+app_cart_use:
+    path:     /use/{id}
+    defaults: { _controller: AppBundle:Cart:useCart }
+    requirements:
+        id: \d+
+
+app_cart_save:
+    path:     /save
+    defaults: { _controller: AppBundle:Cart:saveCart }
+
+app_cart_delete:
+    path:     /delete/{id}
+    defaults: { _controller: AppBundle:Cart:deleteCart }
+    requirements:
+        id: \d+
+
+app_cart_checkout:
+    path:     /checkout/{state}
+    defaults: { _controller: AppBundle:Cart:checkout, state: null }
+    requirements:
+        state: null|validate

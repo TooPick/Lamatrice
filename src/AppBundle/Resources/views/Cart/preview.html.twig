@@ -7,10 +7,10 @@
       <div class="aa-catg-head-banner-area">
         <div class="container">
           <div class="aa-catg-head-banner-content">
-            <h2>Panier</h2>
+            <h2>Aperçu d'un panier</h2>
             <ol class="breadcrumb">
-              <li><a href="{{ path('app_homepage') }}">Accueil</a></li>
-              <li class="active">Panier</li>
+              <li><a href="{{ path('user_account') }}">Mon Compte</a></li>
+              <li class="active">Aperçu d'un panier</li>
             </ol>
           </div>
         </div>
@@ -21,6 +21,13 @@
     <!-- Cart view section -->
     <section id="cart-view">
       <div class="container">
+        <div class="row text-center">
+          <div class="col-md-12">
+            <div class="cart-view-area">
+              <p>Etat du panier : {{ getStatusLabel(cart.status) }}</p>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-12">
             <div class="cart-view-area">
@@ -29,7 +36,6 @@
                   <table class="table">
                     <thead>
                     <tr>
-                      <th></th>
                       <th></th>
                       <th>Produit</th>
                       <th>Prix</th>
@@ -47,7 +53,6 @@
                         {% set totalProductPrice = product.price * quantity %}
                         {% set cartPrice = cartPrice + totalProductPrice %}
 
-                        <td><a class="remove" href="{{ path('app_cart_remove_product', {id: product.id}) }}"><fa class="fa fa-close"></fa></a></td>
                         <td><a href="{{ path('app_product_show', {id: product.id}) }}"><img src="http://lorempixel.com/250/300/cats" alt="img"></a></td>
                         <td><a class="aa-cart-title" href="{{ path('app_product_show', {id: product.id}) }}">{{ product.name }}</a></td>
                         <td>{{ product.price }} €</td>
@@ -69,7 +74,6 @@
                     </tr>
                     </tbody>
                   </table>
-                  <a href="{{ path('app_cart_save') }}" class="aa-cart-view-btn">Sauvegarder pour plus tard</a><a href="{{ path('app_cart_checkout') }}" class="aa-cart-view-btn">Procéder au paiement</a>
                 </div>
               </div>
             </div>
