@@ -14,10 +14,12 @@ class AppController extends Controller
     	$productRepository = $em->getRepository("AppBundle:Product");
     	
     	$productsStationery = $productRepository->findBy(array(
+			"visible" => true,
     		"category" => CategoryTypeEnum::TYPE_STATIONERY,
     	), null, 8);
     	
     	$productsPlastic = $productRepository->findBy(array(
+			"visible" => true,
     		"category" => CategoryTypeEnum::TYPE_PLASTIC,
     	), null, 8);
 
@@ -34,11 +36,13 @@ class AppController extends Controller
     	$products = array();
     	if($type == "stationery"){
     		$products = $productRepository->findBy(array(
-    		"category" => CategoryTypeEnum::TYPE_STATIONERY,
+				"visible" => true,
+    			"category" => CategoryTypeEnum::TYPE_STATIONERY,
     		));
     	}else {
     		$products = $productRepository->findBy(array(
-    		"category" => CategoryTypeEnum::TYPE_PLASTIC,
+				"visible" => true,
+    			"category" => CategoryTypeEnum::TYPE_PLASTIC,
     		));
     	}
     	return $this->render('AppBundle:App:productsList.html.twig', array(
@@ -48,6 +52,10 @@ class AppController extends Controller
     }
 
     public function productAction(Product $product) {
+		if(!$product->getVisible()) {
+			throw $this->createNotFoundException('Erreur: Produit introuvable.');
+		}
+
         return $this->render('AppBundle:App:product.html.twig', array(
             'product' => $product,
         ));
