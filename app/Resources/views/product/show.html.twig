@@ -45,6 +45,14 @@
                 <th>Photo</th>
                 <td>{{ product.picture }}</td>
             </tr>
+            <tr>
+                <th>Visible</th>
+                {% if product.visible == 1 %}
+                    <td>Visible</td>
+                {% else %}
+                    <td>Non visible</td>
+                {% endif %}
+            </tr>
         </tbody>
     </table>
 
