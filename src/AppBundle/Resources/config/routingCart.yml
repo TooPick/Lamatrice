@@ -31,6 +31,12 @@ app_cart_save:
     path:     /save
     defaults: { _controller: AppBundle:Cart:saveCart }
 
+app_cart_delete:
+    path:     /delete/{id}
+    defaults: { _controller: AppBundle:Cart:deleteCart }
+    requirements:
+        id: \d+
+
 app_cart_checkout:
     path:     /checkout/{state}
     defaults: { _controller: AppBundle:Cart:checkout, state: null }

@@ -9,6 +9,8 @@ app_homepage:
 app_products_list:
     path:     /{type}/list
     defaults: { _controller: AppBundle:App:productsList }
+    requirements:
+        type: stationery|plastic
 
 app_product_show:
     path: /product/{id}

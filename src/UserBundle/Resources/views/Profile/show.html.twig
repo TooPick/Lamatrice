@@ -32,7 +32,7 @@
                                                         <td>Panier {{ cart.id }}</td>
                                                         <td>{{ cart.cartProducts|length }}</td>
                                                         <td>{{ totalValidated }} €</td>
-                                                        <td><a class="aa-browse-btn" href="{{ path('app_cart_preview', {id: cart.id}) }}">Voir</a> <a class="aa-browse-btn" href="{{ path('app_cart_use', {id: cart.id}) }}">Utiliser</a></td>
+                                                        <td><a class="aa-browse-btn" href="{{ path('app_cart_preview', {id: cart.id}) }}">Voir</a> <a class="aa-browse-btn" href="{{ path('app_cart_use', {id: cart.id}) }}">Utiliser</a> <a class="aa-browse-btn" href="{{ path('app_cart_delete', {id: cart.id}) }}">Sup</a></td>
                                                     </tr>
                                                 {% endfor %}
                                             </tbody>

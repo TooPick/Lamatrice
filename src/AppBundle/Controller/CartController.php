@@ -56,7 +56,7 @@ class CartController extends Controller
 
             $cart = $cartRepository->find($currentCartId);
 
-            if($cart->getValidated()) {
+            if($cart == null || $cart->getValidated()) {
                 $cart = null;
             }
         }
@@ -142,6 +142,11 @@ class CartController extends Controller
                     $em->flush();
 
                     $this->get('session')->getFlashBag()->add('success', "Le produit a bien été retiré du panier.");
+
+                    if(count($cart->getCartProducts()) <= 0) {
+                        $em->remove($cart);
+                        $em->flush();
+                    }
                 }
             }
         }
@@ -174,6 +179,26 @@ class CartController extends Controller
         $this->get('session')->getFlashBag()->add('success', "Le panier a bien été sauvegardé, vous pouvez le retrouver dans la section \"Mon Compte\".");
 
         return $this->redirectToRoute('app_homepage');
+    }
+
+    public function deleteCartAction(Cart $cart)
+    {
+        $user = $this->getUser();
+        if($cart->getUser() != $user)
+            throw $this->createNotFoundException("Erreur : Panier introuvable.");
+
+        if($cart->getValidated()) {
+            $this->get('session')->getFlashBag()->add('warning', "Vous ne pouvez pas supprimer un panier qui a déjà été validé.");
+
+        } else {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($cart);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add('success', "Le panier a bien été supprimé.");
+        }
+
+        return $this->redirectToRoute('user_account');
     }
 
     public function checkoutAction($state)
