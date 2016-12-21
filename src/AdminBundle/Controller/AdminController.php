@@ -19,7 +19,7 @@ class AdminController extends Controller
 
     /**
      * Affiche la liste de tous les paniers validés par les utilisateurs, c'est à dire les paniers que l'utilisateur à "payés"
-    **/
+     **/
     public function panierValidateAction(){
         $em = $this->getDoctrine()->getManager();
         $panier_repo = $em->getRepository("AppBundle:Cart");
@@ -90,8 +90,8 @@ class AdminController extends Controller
 
             $em->persist($panier);
             foreach ($objets as $objet){
-              $objet->getProduct()->setQuantity($objet->getProduct()->getQuantity() - $objet->getQuantity());
-              $em->persist($objet);
+                $objet->getProduct()->setQuantity($objet->getProduct()->getQuantity() - $objet->getQuantity());
+                $em->persist($objet);
             }
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', "Le panier à bien été validé !");

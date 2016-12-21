@@ -1,7 +1,7 @@
-{% extends "::base.html.twig" %}
+{% extends "AdminBundle::layout.html.twig" %}
 
-{% block body %}
-<h2>AdminBundle - Liste des Paniers</h2>
+{% block admin_content %}
+    <h2>AdminBundle - Liste des Paniers</h2>
 
     <div class=".table-striped">
         <table class="table">
@@ -29,9 +29,6 @@
             </tbody>
         </table>
     </div>
-
-    <a href="{{ path('admin_panierValidate') }}">Revenir à la liste des paniers</a></br>
-    <a href="{{ path('admin_homepage') }}">Revenir au menu Admin</a>
 
 {% endblock %}
 
