@@ -32,6 +32,17 @@ class CartController extends Controller
         ));
     }
 
+    public function previewCartAction(Cart $cart)
+    {
+        $user = $this->getUser();
+        if($cart->getUser() != $user)
+            throw $this->createNotFoundException('Erreur : Panier introuvable.');
+
+        return $this->render('AppBundle:Cart:preview.html.twig', array(
+            'cart' => $cart,
+        ));
+    }
+
     public function addProductAction(Product $product, $quantity)
     {
         $currentCartId = $this->get('session')->get('user_current_cart_id');
@@ -63,6 +74,11 @@ class CartController extends Controller
         }
 
         if($cart != null) {
+            if($cart->getValidated()) {
+                $this->get('session')->getFlashBag()->add('warning', "Le panier choisi a déjà été validé.");
+                return $this->redirectToRoute('app_homepage');
+            }
+
             if($product->getQuantity() <= 0)
                 $this->get('session')->getFlashBag()->add('warning', "Attention, ce produit est en rupture de stocks, il n'a pas été ajouté au panier.");
             else {
@@ -110,6 +126,11 @@ class CartController extends Controller
             $cart = $cartRepository->find($currentCartId);
 
             if($cart != null) {
+                if($cart->getValidated()) {
+                    $this->get('session')->getFlashBag()->add('warning', "Le panier choisi a déjà été validé.");
+                    return $this->redirectToRoute('app_homepage');
+                }
+
                 $cartProductRepository = $em->getRepository('AppBundle:CartProduct');
                 $cartProduct = $cartProductRepository->findOneBy(array(
                     'cart' => $cart,
@@ -170,6 +191,11 @@ class CartController extends Controller
         if($cart == null) {
             $this->get('session')->getFlashBag()->add('waning', "Attention le panier est vide.");
             return $this->redirectToRoute('app_cart_show');
+        }
+
+        if($cart->getValidated()) {
+            $this->get('session')->getFlashBag()->add('warning', "Le panier choisi a déjà été validé.");
+            return $this->redirectToRoute('app_homepage');
         }
 
         if($state == "validate") {
