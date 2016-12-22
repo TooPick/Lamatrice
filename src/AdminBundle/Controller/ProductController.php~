@@ -46,6 +46,7 @@ class ProductController extends Controller
         ));
     }
 
+   
     /**
      * Creates a new product entity.
      *

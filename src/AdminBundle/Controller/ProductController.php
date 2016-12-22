@@ -47,6 +47,33 @@ class ProductController extends Controller
     }
 
     /**
+     * List all alerts entities
+     */
+    public function alertsAction(){
+    $em = $this->getDoctrine()->getManager();
+    $query = $em->createQuery(
+        'SELECT p
+        FROM AppBundle:Product p
+        WHERE p.quantity <= p.quantityAlert
+        ORDER BY p.quantity ASC'
+    );
+        $products = $query->getResult();
+
+     $query = $em->createQuery(
+        'SELECT p
+        FROM AppBundle:Product p
+        WHERE CURRENT_DATE() >= p.expirationDate
+        ORDER BY p.quantity ASC'
+    );
+        $productsP = $query->getResult();
+
+        return $this->render('AdminBundle:Admin:product/alerts.html.twig', array(
+            'products' => $products,
+            'productsP' => $productsP,
+        ));
+    }
+
+    /**
      * Creates a new product entity.
      *
      */
