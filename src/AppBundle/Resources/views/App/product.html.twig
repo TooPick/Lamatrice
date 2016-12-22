@@ -19,6 +19,12 @@
   </section>
   <!-- / catg header banner section -->
 
+  {% if product.picture != null %}
+    {% set image_product = asset('uploads/products/' ~ product.picture) %}
+  {% else %}
+    {% set image_product = asset('img/default-product.png') %}
+  {% endif %}
+
   <!-- product category -->
   <section id="aa-product-details">
     <div class="container">
@@ -32,7 +38,7 @@
                   <div class="aa-product-view-slider">
                     <div id="demo-1" class="simpleLens-gallery-container">
                       <div class="simpleLens-container">
-                        <div class="simpleLens-big-image-container"><a data-lens-image="{{ asset('theme/img/view-slider/large/polo-shirt-1.png') }}" class="simpleLens-lens-image"><img src="{{ asset('theme/img/view-slider/medium/polo-shirt-1.png') }}" class="simpleLens-big-image"></a></div>
+                        <div class="simpleLens-big-image-container"><a data-lens-image="{{ image_product }}" class="simpleLens-lens-image"><img style='height: 300px; width: 250px; object-fit: cover' src="{{ image_product }}" class="simpleLens-big-image"></a></div>
                       </div>
                     </div>
                   </div>

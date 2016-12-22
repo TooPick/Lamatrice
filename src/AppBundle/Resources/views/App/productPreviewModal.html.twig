@@ -1,3 +1,9 @@
+{% if product.picture != null %}
+    {% set image_element_modal = asset('uploads/products/' ~ product.picture) %}
+{% else %}
+    {% set image_element_modal = asset('img/default-product.png') %}
+{% endif %}
+
 <div class="modal fade modal-product-{{ product.id }}" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -9,8 +15,8 @@
                             <div class="simpleLens-gallery-container" id="demo-1">
                                 <div class="simpleLens-container">
                                     <div class="simpleLens-big-image-container">
-                                        <a class="simpleLens-lens-image" data-lens-image="{{ asset('theme/img/view-slider/large/polo-shirt-1.png') }}">
-                                            <img src="{{ asset('theme/img/view-slider/medium/polo-shirt-1.png') }}" class="simpleLens-big-image">
+                                        <a class="simpleLens-lens-image" data-lens-image="{{ image_element_modal }}">
+                                            <img style='height: 300px; width: 250px; object-fit: cover' src="{{ image_element_modal }}" class="simpleLens-big-image">
                                         </a>
                                     </div>
                                 </div>

@@ -1,6 +1,12 @@
 <li>
   <figure>
-    <a class="aa-product-img" href="{{ path("app_product_show", {id: product.id}) }}"><img src="{{ asset('theme/img/women/girl-1.png') }}" alt="{{ product.name }}"></a>
+    {% if product.picture != null %}
+      {% set image_element_list = asset('uploads/products/' ~ product.picture) %}
+    {% else %}
+      {% set image_element_list = asset('img/default-product.png') %}
+    {% endif %}
+
+    <a class="aa-product-img" href="{{ path("app_product_show", {id: product.id}) }}"><img style='height: 300px; width: 250px; object-fit: cover' src="{{ image_element_list }}" alt="{{ product.name }}"></a>
     <a class="aa-add-card-btn" href="{{ path('app_cart_add_product', {id: product.id, quantity: 1}) }}"><span class="fa fa-shopping-cart"></span>Ajouter au panier</a>
     <figcaption>
       <h4 class="aa-product-title"><a href="{{ path("app_product_show", {id: product.id}) }}">{{ product.name }}</a></h4>

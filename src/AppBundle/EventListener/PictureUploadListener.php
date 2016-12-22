@@ -37,9 +37,13 @@ class PictureUploadListener
 
         $filename = $args->getOldValue('picture');
 
-        unlink($this->uploader->getTargetDir().'/'.$filename);
+        if($entity->getPicture() != null) {
+            if($filename != null)
+                unlink($this->uploader->getTargetDir() . '/' . $filename);
 
-        $this->uploadFile($entity);
+            $this->uploadFile($entity);
+        } else
+            $entity->setPicture($filename);
     }
 
     private function uploadFile($entity)
@@ -58,19 +62,6 @@ class PictureUploadListener
 
         $fileName = $this->uploader->upload($file);
         $entity->setPicture($fileName);
-    }
-
-    public function postLoad(LifecycleEventArgs $args)
-    {
-        $entity = $args->getEntity();
-
-        if(!$entity instanceof Product)
-            return;
-
-        $filename = $entity->getPicture();
-
-        if($filename != null)
-            $entity->setPicture(new File($this->uploader->getTargetDir().'/'.$filename));
     }
 
     public function preRemove(LifecycleEventArgs $args)

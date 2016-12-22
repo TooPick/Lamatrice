@@ -17,12 +17,12 @@ class AppController extends Controller
     	$productsStationery = $productRepository->findBy(array(
 			"visible" => true,
     		"category" => CategoryTypeEnum::TYPE_STATIONERY,
-    	), null, 8);
+    	), array('id' => 'DESC'), 8);
     	
     	$productsPlastic = $productRepository->findBy(array(
 			"visible" => true,
     		"category" => CategoryTypeEnum::TYPE_PLASTIC,
-    	), null, 8);
+    	), array('id' => 'DESC'), 8);
 
         return $this->render('AppBundle:App:index.html.twig', array(
         	'productsStationery' => $productsStationery,
@@ -57,12 +57,12 @@ class AppController extends Controller
     		$products = $productRepository->findBy(array(
 				"visible" => true,
     			"category" => CategoryTypeEnum::TYPE_STATIONERY,
-    		));
+    		), array('id' => 'DESC'));
     	}else {
     		$products = $productRepository->findBy(array(
 				"visible" => true,
     			"category" => CategoryTypeEnum::TYPE_PLASTIC,
-    		));
+    		), array('id' => 'DESC'));
     	}
     	return $this->render('AppBundle:App:productsList.html.twig', array(
     		'type' => $type,

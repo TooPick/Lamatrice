@@ -122,7 +122,13 @@
                                         {% set quantityPopup = cartProductPopup.quantity %}
 
                                         <li>
-                                            <a class="aa-cartbox-img" href="{{ path('app_product_show', {id: productPopup.id}) }}"><img src="{{ asset("theme/img/woman-small-2.jpg") }}" alt="img"></a>
+                                            {% if productPopup.picture != null %}
+                                                {% set image_element_cart = asset('uploads/products/' ~ productPopup.picture) %}
+                                            {% else %}
+                                                {% set image_element_cart = asset('img/default-product-cart-popup.jpg') %}
+                                            {% endif %}
+
+                                            <a class="aa-cartbox-img" href="{{ path('app_product_show', {id: productPopup.id}) }}"><img style='object-fit: cover' src="{{ image_element_cart }}" alt="img"></a>
                                             <div class="aa-cartbox-info">
                                                 <h4><a href="{{ path('app_product_show', {id: productPopup.id}) }}">{{ productPopup.name }}</a></h4>
                                                 <p>{{ quantityPopup }} x {{ productPopup.price }} €</p>

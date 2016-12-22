@@ -33,7 +33,7 @@ class ProductType extends AbstractType
                     return CategoryTypeEnum::getTypeName($choice);
                 },
                 'label'=>'Categorie',
-                ))->add('quantityAlert',IntegerType::class,array('label'=>'Alerte Quantité'))->add('price',TextType::class,array('label'=>'Prix'))->add('expirationDate',DateTimeType::class,array('label'=>'Date d\'expiration'))->add('picture', FileType::class,array('label'=>'Photo'))->add('visible')        ;
+                ))->add('quantityAlert',IntegerType::class,array('label'=>'Alerte Quantité'))->add('price',TextType::class,array('label'=>'Prix'))->add('expirationDate',DateTimeType::class,array('label'=>'Date d\'expiration'))->add('picture', FileType::class,array('label'=>'Photo', 'data_class' => null, 'required' => false))->add('visible')        ;
             }
         } else {
             $builder->add('reference')->add('name',TextType::class,array('label'=>'Nom'))->add('description')
@@ -45,7 +45,7 @@ class ProductType extends AbstractType
                     return CategoryTypeEnum::getTypeName($choice);
                 },
                 'label'=>'Categorie',
-                ))->add('quantity',IntegerType::class,array('label'=>'Quantité'))->add('quantityAlert',IntegerType::class,array('label'=>'Alerte Quantité'))->add('price',TextType::class,array('label'=>'Prix'))->add('expirationDate',DateTimeType::class,array('label'=>'Date d\'expiration'))->add('picture',FileType::class,array('label'=>'Photo'))->add('visible')        ;
+                ))->add('quantity',IntegerType::class,array('label'=>'Quantité'))->add('quantityAlert',IntegerType::class,array('label'=>'Alerte Quantité'))->add('price',TextType::class,array('label'=>'Prix'))->add('expirationDate',DateTimeType::class,array('label'=>'Date d\'expiration'))->add('picture',FileType::class,array('label'=>'Photo', 'data_class' => null, 'required' => false))->add('visible')        ;
             }
     }
     
