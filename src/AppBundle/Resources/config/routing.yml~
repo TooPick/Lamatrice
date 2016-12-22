@@ -1,5 +1,5 @@
 app_admin_product:
-    resource: "@AdminBundle/Resources/config/routing/product.yml"
+    resource: "@AppBundle/Resources/config/routing/product.yml"
     prefix:   /admin/product
 
 app_homepage:
