@@ -5,25 +5,18 @@
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Modifier" />
+        <input class="aa-browse-btn" type="submit" value="Modifier" />
     {{ form_end(edit_form) }}
 
     <ul>
-        <li>
-            {% set currentPath = path(app.request.attributes.get('_route'),
-                           app.request.attributes.get('_route_params')) %}
-            {% set path = currentPath|split('/') %}
-            {% if path[path|length-1] == "stockEdit" %}
-                <a href="{{ path('admin_product_stock') }}">Retour à la liste</a>
-            {% endif %}
-            {% if path[path|length-1] == "edit" %}
-                <a href="{{ path('admin_product_index') }}">Retour à la liste</a>
-            {% endif %}
-        </li>
+        {% set currentPath = path(app.request.attributes.get('_route'),
+                       app.request.attributes.get('_route_params')) %}
+        {% set path = currentPath|split('/') %}
+            
         <li>
             {{ form_start(delete_form) }}
                 {% if path[path|length-1] == "edit" %}
-                    <input type="submit" value="Supprimer">
+                    <br><input class="aa-browse-btn" type="submit" value="Supprimer">
                 {% endif %}
             {{ form_end(delete_form) }}
         </li>
