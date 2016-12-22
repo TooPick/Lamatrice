@@ -40,6 +40,13 @@ class CartProduct
      */
     private $product;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="processed_quantity", type="integer")
+     */
+    private $processedQuantity = 0;
+
 
     /**
      * Get id
@@ -121,5 +128,29 @@ class CartProduct
     public function getProduct()
     {
         return $this->product;
+    }
+
+    /**
+     * Set processedQuantity
+     *
+     * @param integer $processedQuantity
+     *
+     * @return CartProduct
+     */
+    public function setProcessedQuantity($processedQuantity)
+    {
+        $this->processedQuantity = $processedQuantity;
+
+        return $this;
+    }
+
+    /**
+     * Get processedQuantity
+     *
+     * @return integer
+     */
+    public function getProcessedQuantity()
+    {
+        return $this->processedQuantity;
     }
 }

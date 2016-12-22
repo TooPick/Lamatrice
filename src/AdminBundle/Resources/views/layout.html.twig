@@ -1,17 +1,19 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-    <nav aria-label="...">
-        <ul class="pager">
-            <li><a href="{{ path('admin_homepage') }}">Accueil</a></li>
-            <li><a href="{{ path('admin_panierValidate') }}">Voir tous les Paniers</a></li>
-            <li><a href="{{ path('admin_panierValidate') }}">Voir tous les paniers validés</a></li>
-            <li><a href="{{ path('admin_panierTreated') }}">Voir les paniers traités</a></li>
-            <li><a href="{{ path('admin_panierBeeingTreated') }}">Voir les paniers en cours de traitement</a></li>
-            <li><a href="{{ path('admin_product_index') }}">Liste des produits</a></li>
-            <li><a href="{{ path('admin_product_stock') }}">Liste des stocks</a></li>
-        </ul>
-    </nav>
+    <div class="row">
+        <nav id="admin-navbar">
+            <ul class="pager">
+                <li><a href="{{ path('admin_homepage') }}">Accueil</a></li>
+                <li><a href="{{ path('admin_carts_list') }}">Paniers non traités</a></li>
+                <li><a href="{{ path('admin_being_treated_carts') }}">Paniers en cours de traitement</a></li>
+                <li><a href="{{ path('admin_treated_carts') }}">Paniers traités</a></li>
+                <li><a href="{{ path('admin_product_index') }}">Liste des produits</a></li>
+                <li><a href="{{ path('admin_product_stock') }}">Liste des stocks</a></li>
+            </ul>
+        </nav>
+    </div>
+
     <div class="container">
 
         {%  block admin_content %}

@@ -29,7 +29,7 @@
                 <td><a href="{{ path('admin_product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
                 <td>{{ product.reference }}</td>
                 <td>{{ product.name }}</td>
-                <td>{{ product.category }}</td>
+                <td>{{ getCategoryLabel(product.category) }}</td>
                 <td>{{ product.quantity }}</td>
                 <td>{{ product.quantityAlert }}</td>
                 <td>{{ product.price }}</td>

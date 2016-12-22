@@ -2,26 +2,20 @@ admin_homepage:
     path:     /
     defaults: { _controller: AdminBundle:Admin:index }
 
-admin_panierValidate:
-    path:     /panier
-    defaults: { _controller: AdminBundle:Admin:panierValidate }
+admin_carts_list:
+    path:     /carts
+    defaults: { _controller: AdminBundle:Admin:cartsList }
 
-admin_panier_treat:
-    path:     /panier/treat/{id}
-    defaults: { _controller: AdminBundle:Admin:traitePanier }
-    requirements:
-        id: \d+
+admin_being_treated_carts:
+    path:     /carts/beingtreated
+    defaults: { _controller: AdminBundle:Admin:beingTreatedCartsList }
 
-admin_panierBeeingTreated:
-    path:     /panier/panierBeeingTreatedAction
-    defaults: { _controller: AdminBundle:Admin:panierBeeingTreated }
+admin_treated_carts:
+    path:     /carts/treated
+    defaults: { _controller: AdminBundle:Admin:treatedCartsList }
 
-admin_panierTreated:
-    path:     /panier/treated
-    defaults: { _controller: AdminBundle:Admin:panierTreated }
-
-admin_panier_beeing_traited:
-    path:   /panier/beeingTreated/{id}
-    defaults: { _controller: AdminBundle:Admin:beeingtraitedPanier }
+admin_treat_cart:
+    path:     /carts/treat/{id}
+    defaults: { _controller: AdminBundle:Admin:treatCart }
     requirements:
         id: \d+

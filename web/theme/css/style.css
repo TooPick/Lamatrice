@@ -10,7 +10,14 @@ AJOUT LAMATRICE
   position: relative;
   width: 100%;
   float: left;
+}
+
+.alert {
   margin-top: 15px;
+}
+
+#admin-navbar {
+  margin: 15px 0;
 }
 
 /*

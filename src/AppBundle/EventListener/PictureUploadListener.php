@@ -35,15 +35,19 @@ class PictureUploadListener
         if(!$entity instanceof Product)
             return;
 
-        $filename = $args->getOldValue('picture');
+        if($args->hasChangedField('picture'))
+        {
+            $filename = $args->getOldValue('picture');
 
-        if($entity->getPicture() != null) {
-            if($filename != null)
-                unlink($this->uploader->getTargetDir() . '/' . $filename);
+            if($entity->getPicture() != null) {
+                if($filename != null)
+                    unlink($this->uploader->getTargetDir() . '/' . $filename);
 
-            $this->uploadFile($entity);
-        } else
-            $entity->setPicture($filename);
+                $this->uploadFile($entity);
+            } else
+                $entity->setPicture($filename);
+        }
+
     }
 
     private function uploadFile($entity)
