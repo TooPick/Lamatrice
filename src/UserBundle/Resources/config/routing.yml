@@ -1,7 +1,3 @@
-user_homepage:
-    path:     /
-    defaults: { _controller: UserBundle:User:index }
-
 user_account:
     path:     /account
     defaults: { _controller: UserBundle:User:account }

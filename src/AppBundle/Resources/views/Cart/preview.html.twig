@@ -1,9 +1,11 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}{{ parent() }} | Aperçu d'un panier : Panier {{ cart.id }}{% endblock %}
+
   {% block body %}
     <!-- catg header banner section -->
     <section id="aa-catg-head-banner">
-      <img src="{{ asset('img/cart-header.png') }}" alt="fashion img">
+      <img src="{{ asset('img/cart-header.png') }}" alt="Panier Header">
       <div class="aa-catg-head-banner-area">
         <div class="container">
           <div class="aa-catg-head-banner-content">
@@ -55,7 +57,13 @@
                         {% set totalProductPrice = product.price * quantity %}
                         {% set cartPrice = cartPrice + totalProductPrice %}
 
-                        <td><a href="{{ path('app_product_show', {id: product.id}) }}"><img src="http://lorempixel.com/250/300/cats" alt="img"></a></td>
+                        {% if product.picture != null %}
+                          {% set image_element_cart = asset('uploads/products/' ~ product.picture) %}
+                        {% else %}
+                          {% set image_element_cart = asset('img/default-product.png') %}
+                        {% endif %}
+
+                        <td><a href="{{ path('app_product_show', {id: product.id}) }}"><img src="{{ image_element_cart }}" alt="{{ product.name }}"></a></td>
                         <td><a class="aa-cart-title" href="{{ path('app_product_show', {id: product.id}) }}">{{ product.name }}</a></td>
                         <td>{{ product.price }} €</td>
                         <td>{{ quantity }}</td>

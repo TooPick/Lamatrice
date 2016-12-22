@@ -1,5 +1,7 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}{{ parent() }} | Administration{% endblock %}
+
 {% block body %}
     <div class="row">
         <nav id="admin-navbar">
@@ -18,5 +20,6 @@
 
         {%  block admin_content %}
         {%  endblock %}
+
     </div>
 {% endblock %}

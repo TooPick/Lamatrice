@@ -1,5 +1,7 @@
 {% extends "UserBundle::layout.html.twig" %}
 
+{% block title %}{{ parent() }} | Inscription{% endblock %}
+
 {% block fos_user_content %}
 
     <div class="row text-center">
@@ -15,7 +17,7 @@
                 {{ form_widget(form) }}
 
                 <div class="form-group text-center">
-                    <input class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans }}" />
+                    <input class="aa-browse-btn" type="submit" value="{{ 'registration.submit'|trans }}" />
                 </div>
             {{ form_end(form) }}
         </div>

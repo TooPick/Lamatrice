@@ -1,9 +1,11 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}{{ parent() }} | {{ product.name }}{% endblock %}
+
 {% block body %}
   <!-- catg header banner section -->
   <section id="aa-catg-head-banner">
-    <img src="{{ asset('img/product-header.png') }}" alt="fashion img">
+    <img src="{{ asset('img/product-header.png') }}" alt="{{ product.name }}">
     <div class="aa-catg-head-banner-area">
       <div class="container">
         <div class="aa-catg-head-banner-content">
@@ -38,7 +40,7 @@
                   <div class="aa-product-view-slider">
                     <div id="demo-1" class="simpleLens-gallery-container">
                       <div class="simpleLens-container">
-                        <div class="simpleLens-big-image-container"><a data-lens-image="{{ image_product }}" class="simpleLens-lens-image"><img style='height: 300px; width: 250px; object-fit: cover' src="{{ image_product }}" class="simpleLens-big-image"></a></div>
+                        <div class="simpleLens-big-image-container"><a data-lens-image="{{ image_product }}" class="simpleLens-lens-image"><img style='height: 300px; width: 250px; object-fit: cover' src="{{ image_product }}" class="simpleLens-big-image" alt="{{ product.name }}"></a></div>
                       </div>
                     </div>
                   </div>

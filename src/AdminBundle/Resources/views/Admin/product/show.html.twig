@@ -1,5 +1,7 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 
+{% block title %}{{ parent() }} | Infos du produit : {{ product.name }}{% endblock %}
+
 {% block admin_content %}
     <div class="row text-center">
         <h1>Produit : <span class="colored">{{ product.name }}</span></h1>

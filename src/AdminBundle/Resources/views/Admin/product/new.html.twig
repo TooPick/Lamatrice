@@ -1,10 +1,18 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 
-{% block admin_content %}
-    <h1>Rajout d'un produit</h1>
+{% block title %}{{ parent() }} | Ajouter un produit{% endblock %}
 
-    {{ form_start(form) }}
+{% block admin_content %}
+
+    <div class="row">
+        <h1>Ajouter un nouveau produit</h1>
+
+        {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Créer" />
-    {{ form_end(form) }}
+        <div class="row text-center">
+            <input class="aa-browse-btn" type="submit" value="Créer" />
+        </div>
+        {{ form_end(form) }}
+    </div>
+
 {% endblock %}

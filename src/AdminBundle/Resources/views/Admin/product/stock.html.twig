@@ -1,5 +1,7 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 
+{% block title %}{{ parent() }} | Gestion des stocks{% endblock %}
+
 {% block admin_content %}
     <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/media/css/jquery.dataTables.min.css') }}">
