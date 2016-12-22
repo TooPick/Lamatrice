@@ -1,6 +1,9 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}{{ parent() }} | Administration{% endblock %}
+
 {% block body %}
+<<<<<<< HEAD
     <nav aria-label="...">
         <ul class="pager">
             <li><a href="{{ path('admin_homepage') }}">Accueil</a></li>
@@ -13,9 +16,25 @@
             <li><a href="{{ path('admin_product_alerts') }}">Alertes</a></li>
         </ul>
     </nav>
+=======
+    <div class="row">
+        <nav id="admin-navbar">
+            <ul class="pager">
+                <li><a href="{{ path('admin_homepage') }}">Accueil</a></li>
+                <li><a href="{{ path('admin_carts_list') }}">Paniers non traités</a></li>
+                <li><a href="{{ path('admin_being_treated_carts') }}">Paniers en cours de traitement</a></li>
+                <li><a href="{{ path('admin_treated_carts') }}">Paniers traités</a></li>
+                <li><a href="{{ path('admin_product_index') }}">Liste des produits</a></li>
+                <li><a href="{{ path('admin_product_stock') }}">Liste des stocks</a></li>
+            </ul>
+        </nav>
+    </div>
+
+>>>>>>> 76523eb27e1868bc011c8f470d480a2f08ea5ec8
     <div class="container">
 
         {%  block admin_content %}
         {%  endblock %}
+
     </div>
 {% endblock %}

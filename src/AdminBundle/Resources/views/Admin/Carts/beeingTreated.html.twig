@@ -1,0 +1,57 @@
+{% extends "AdminBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} | Paniers en cours de traitement{% endblock %}
+
+{% block admin_content %}
+
+    <div class="row">
+        <h2>Liste des paniers en cours de traitement</h2>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Utilisateur</th>
+                <th>Contenu du panier</th>
+                <th>Articles traités</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for cart in carts %}
+                <tr>
+                    <td>{{ cart.user.username }}</td>
+                    <td>
+                        <ul>
+                            {% for cartProduct in cart.cartProducts %}
+                                <li><a class="colored" href="{{ path('app_product_show', {id: cartProduct.product.id}) }}">{{ cartProduct.product.name  }}</a> x {{ cartProduct.quantity }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            {% set noProcessed = true %}
+                            {% for cartProduct in cart.cartProducts %}
+                                {% if cartProduct.processedQuantity > 0 %}
+                                    {% set noProcessed = false %}
+                                    <li><a class="colored" href="{{ path('app_product_show', {id: cartProduct.product.id}) }}">{{ cartProduct.product.name  }}</a> x {{ cartProduct.processedQuantity }}</li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if noProcessed %}
+                                <li>Aucun</li>
+                            {% endif %}
+                        </ul>
+                    </td>
+                    <td>{{ getStatusLabel(cart.status) }}</td>
+                    <td>
+                        <a class="aa-browse-btn" href="{{ path('admin_treat_cart',{id:cart.id}) }}">Traiter <i class="fa fa-check" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+
+

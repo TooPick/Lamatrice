@@ -1,5 +1,7 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 
+{% block title %}{{ parent() }} | Liste des produits{% endblock %}
+
 {% block admin_content %}
     <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/media/css/jquery.dataTables.min.css') }}">
@@ -29,7 +31,7 @@
                 <td><a href="{{ path('admin_product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
                 <td>{{ product.reference }}</td>
                 <td>{{ product.name }}</td>
-                <td>{{ product.category }}</td>
+                <td>{{ getCategoryLabel(product.category) }}</td>
                 <td>{{ product.quantity }}</td>
                 <td>{{ product.quantityAlert }}</td>
                 <td>{{ product.price }}</td>

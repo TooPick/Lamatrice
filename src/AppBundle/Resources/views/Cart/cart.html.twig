@@ -1,9 +1,11 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}{{ parent() }} | Panier{% endblock %}
+
   {% block body %}
     <!-- catg header banner section -->
     <section id="aa-catg-head-banner">
-      <img src="{{ asset('img/cart-header.png') }}" alt="fashion img">
+      <img src="{{ asset('img/cart-header.png') }}" alt="Panier Header">
       <div class="aa-catg-head-banner-area">
         <div class="container">
           <div class="aa-catg-head-banner-content">
@@ -54,7 +56,7 @@
                         {% endif %}
 
                         <td><a class="remove" href="{{ path('app_cart_remove_product', {id: product.id}) }}"><fa class="fa fa-close"></fa></a></td>
-                        <td><a href="{{ path('app_product_show', {id: product.id}) }}"><img src="{{ image_element_cart }}" alt="img"></a></td>
+                        <td><a href="{{ path('app_product_show', {id: product.id}) }}"><img src="{{ image_element_cart }}" alt="{{ product.name }}"></a></td>
                         <td><a class="aa-cart-title" href="{{ path('app_product_show', {id: product.id}) }}">{{ product.name }}</a></td>
                         <td>{{ product.price }} €</td>
                         <td>{{ quantity }}</td>

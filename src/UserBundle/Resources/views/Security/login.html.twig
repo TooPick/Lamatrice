@@ -1,5 +1,7 @@
 {% extends "UserBundle::layout.html.twig" %}
 
+{% block title %}{{ parent() }} | Connexion{% endblock %}
+
 {% block fos_user_content %}
     <div class="row text-center">
         <h2>Connexion</h2>
@@ -38,7 +40,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                        <input class="aa-browse-btn" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
                     </div>
                 </div>
             </form>

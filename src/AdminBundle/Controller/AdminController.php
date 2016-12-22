@@ -18,88 +18,100 @@ class AdminController extends Controller
     }
 
     /**
-     * Affiche la liste de tous les paniers validés par les utilisateurs, c'est à dire les paniers que l'utilisateur à "payés"
+     * Affiche la liste de tous les paniers validés par les utilisateurs, c'est à dire les paniers que l'utilisateur à "payés" et non traité par le magasinier
      **/
-    public function panierValidateAction(){
+    public function cartsListAction(){
         $em = $this->getDoctrine()->getManager();
-        $panier_repo = $em->getRepository("AppBundle:Cart");
-        $paniers = $panier_repo->findBy(
-            array('validated' => true) // virgule pour AND
-        );
-        return $this->render('AdminBundle:Admin:Panier/panierValidate.html.twig',array(
-            'paniers' => $paniers
+
+        $cartsRepository = $em->getRepository("AppBundle:Cart");
+        $carts = $cartsRepository->findBy(array(
+            'validated' => true,         // virgule pour AND
+            'status' => StatusTypeEnum::TYPE_UNTREATED
+        ));
+
+        return $this->render('AdminBundle:Admin:Carts/carts.html.twig',array(
+            'carts' => $carts,
         ));
     }
 
     /**
      * Affiche la liste de tous les paniers que l'administrateur a décidé de mettre en cours de traitement
      **/
-    public function panierBeeingTreatedAction(){
+    public function beingTreatedCartsListAction(){
         $em = $this->getDoctrine()->getManager();
-        $panier_repo = $em->getRepository("AppBundle:Cart");
-        $paniers = $panier_repo->findBy(
-            array('status' => StatusTypeEnum::TYPE_BEING_PROCESSED) // virgule pour AND
-        );
-        return $this->render('AdminBundle:Admin:Panier/beeingTreated.html.twig',array(
-            'paniers' => $paniers
+
+        $cartsRepository = $em->getRepository("AppBundle:Cart");
+        $carts = $cartsRepository->findBy(array(
+            'validated' => true,
+            'status' => StatusTypeEnum::TYPE_BEING_PROCESSED        // virgule pour AND
+        ));
+
+        return $this->render('AdminBundle:Admin:Carts/beeingTreated.html.twig',array(
+            'carts' => $carts
         ));
     }
 
     /**
      * Affiche la liste de tous les paniers traités par l'administrateur.
      **/
-    public function panierTreatedAction(){
+    public function treatedCartsListAction(){
         $em = $this->getDoctrine()->getManager();
-        $panier_repo = $em->getRepository("AppBundle:Cart");
-        $paniers = $panier_repo->findBy(
-            array('status' => StatusTypeEnum::TYPE_PROCESSED) // virgule pour AND
-        );
-        return $this->render('AdminBundle:Admin:Panier/treated.html.twig',array(
-            'paniers' => $paniers
+
+        $cartsRepository = $em->getRepository("AppBundle:Cart");
+        $carts = $cartsRepository->findBy(array(
+            'validated' => true,
+            'status' => StatusTypeEnum::TYPE_PROCESSED          // virgule pour AND
+        ));
+
+        return $this->render('AdminBundle:Admin:Carts/treated.html.twig',array(
+            'carts' => $carts
         ));
     }
 
     /**
-     * Prend un panier en parametre et change le status du panier en " en cours de traitement "
+     * Prend un panier en parametre et change le status en validé uniquement, si le nombre d'objets en stock est suffisant, sinon il est en cours de traitement.
      **/
-    public function beeingtraitedPanierAction(Cart $panier){
-        $panier->setStatus(StatusTypeEnum::TYPE_BEING_PROCESSED);
+    public function treatCartAction(Cart $panier){
+
+        $cartProducts = $panier->getCartProducts();
+
         $em = $this->getDoctrine()->getManager();
+
+        $fullyTreated = true;
+        foreach ($cartProducts as $cartProduct){
+            $product = $cartProduct->getProduct();
+            $neededQuantity = $cartProduct->getQuantity() - $cartProduct->getProcessedQuantity();
+
+            //Cas : quantité en stock supérieure à celle demandée
+            if($neededQuantity <= $product->getQuantity()){
+
+                $cartProduct->setProcessedQuantity($cartProduct->getProcessedQuantity() + $neededQuantity);
+                $product->setQuantity($product->getQuantity() - $neededQuantity);
+            }
+            else {
+                $cartProduct->setProcessedQuantity($cartProduct->getProcessedQuantity() + $product->getQuantity());
+                $product->setQuantity(0);
+                $fullyTreated = false;
+            }
+
+            $em->persist($cartProduct);
+            $em->persist($product);
+        }
+
+        if($fullyTreated) {
+            $panier->setStatus(StatusTypeEnum::TYPE_PROCESSED);
+            $this->get('session')->getFlashBag()->add('success', "Le panier à bien été traité !");
+        } else {
+            $panier->setStatus(StatusTypeEnum::TYPE_BEING_PROCESSED);
+            $this->get('session')->getFlashBag()->add('warning', "Attention, certains produits sont en rupture de stocks, le panier est mis en cours de traitement.");
+        }
 
         $em->persist($panier);
         $em->flush();
-        return $this->redirectToRoute('admin_panierValidate');
-    }
 
-    /**
-     * Prend un panier en parametre et change le status en validé uniquement, si le nombre d'objets en stock est suffisant.
-     **/
-    public function traitePanierAction(Cart $panier){
-
-        $objets = $panier->getCartProducts();
-        $valide = true;
-        foreach ($objets as $objet){
-            if($objet->getQuantity() > $objet->getProduct()->getQuantity()){
-                $valide = false;
-            }
-        }
-
-        if($valide){
-            $panier->setStatus(StatusTypeEnum::TYPE_PROCESSED);
-            $em = $this->getDoctrine()->getManager();
-
-            $em->persist($panier);
-            foreach ($objets as $objet){
-                $objet->getProduct()->setQuantity($objet->getProduct()->getQuantity() - $objet->getQuantity());
-                $em->persist($objet);
-            }
-            $em->flush();
-            $this->get('session')->getFlashBag()->add('success', "Le panier à bien été validé !");
-
-            return $this->redirectToRoute('admin_panierValidate');
-        }else{
-            $this->get('session')->getFlashBag()->add('warning', "Attention, ce produit est en rupture de stocks, il n'y a pas assez de produit en stock pour le valider");
-            return $this->redirectToRoute('admin_panierValidate');
-        }
+        if($fullyTreated)
+            return $this->redirectToRoute('admin_treated_carts');
+        else
+            return $this->redirectToRoute('admin_being_treated_carts');
     }
 }

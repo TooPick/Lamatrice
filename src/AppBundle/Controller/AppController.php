@@ -83,9 +83,4 @@ class AppController extends Controller
     public function contactAction(){
         return $this->render('AppBundle:App:contact.html.twig');
     }
-
-    public function testAction()
-    {
-    	return $this->render('AppBundle:App:base.html.twig');
-    }
 }
