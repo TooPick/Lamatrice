@@ -22,7 +22,7 @@ class LoadProductData implements FixtureInterface
         $product->setCategory($type);
         $product->setDescription("Description de l'article : Article ".$productNumber);
         $product->setExpirationDate($expirationDate);
-        $product->setPicture("fake_picture_article_".$productNumber.".png");
+        $product->setPicture(null);
         $product->setPrice(rand(5, 30));
         $product->setQuantity(rand(25, 100));
         $product->setQuantityAlert(rand(10, 25));

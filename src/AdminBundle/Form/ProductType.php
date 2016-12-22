@@ -3,6 +3,7 @@
 namespace AdminBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use AppBundle\Enum\CategoryTypeEnum;
@@ -32,7 +33,7 @@ class ProductType extends AbstractType
                     return CategoryTypeEnum::getTypeName($choice);
                 },
                 'label'=>'Categorie',
-                ))->add('quantityAlert',IntegerType::class,array('label'=>'Alerte Quantité'))->add('price',TextType::class,array('label'=>'Prix'))->add('expirationDate',DateTimeType::class,array('label'=>'Date d\'expiration'))->add('picture',TextType::class,array('label'=>'Photo'))->add('visible')        ;
+                ))->add('quantityAlert',IntegerType::class,array('label'=>'Alerte Quantité'))->add('price',TextType::class,array('label'=>'Prix'))->add('expirationDate',DateTimeType::class,array('label'=>'Date d\'expiration'))->add('picture', FileType::class,array('label'=>'Photo'))->add('visible')        ;
             }
         } else {
             $builder->add('reference')->add('name',TextType::class,array('label'=>'Nom'))->add('description')
@@ -44,7 +45,7 @@ class ProductType extends AbstractType
                     return CategoryTypeEnum::getTypeName($choice);
                 },
                 'label'=>'Categorie',
-                ))->add('quantity',IntegerType::class,array('label'=>'Quantité'))->add('quantityAlert',IntegerType::class,array('label'=>'Alerte Quantité'))->add('price',TextType::class,array('label'=>'Prix'))->add('expirationDate',DateTimeType::class,array('label'=>'Date d\'expiration'))->add('picture',TextType::class,array('label'=>'Photo'))->add('visible')        ;
+                ))->add('quantity',IntegerType::class,array('label'=>'Quantité'))->add('quantityAlert',IntegerType::class,array('label'=>'Alerte Quantité'))->add('price',TextType::class,array('label'=>'Prix'))->add('expirationDate',DateTimeType::class,array('label'=>'Date d\'expiration'))->add('picture',FileType::class,array('label'=>'Photo'))->add('visible')        ;
             }
     }
     

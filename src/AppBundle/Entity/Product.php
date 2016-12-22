@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use AppBundle\Enum\CategoryTypeEnum;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Product
@@ -81,6 +82,7 @@ class Product
      * @var string
      *
      * @ORM\Column(name="picture", type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes={ "image/bmp", "image/png", "image/tiff", "image/gif", "image/jpeg" })
      */
     private $picture;
 
