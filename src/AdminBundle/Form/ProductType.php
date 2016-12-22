@@ -22,33 +22,72 @@ class ProductType extends AbstractType
     {
         if ( isset($options["attr"]["stock"])){
             if ( $options["attr"]["stock"] == true ){
-                $builder->add('quantity',IntegerType::class,array('label'=>'Quantité')); 
+                $builder->add('quantity',IntegerType::class,array('label'=>'Quantité'));
             } else {
-               $builder->add('reference')->add('name',TextType::class,array('label'=>'Nom'))->add('description')
-                    ->add('category',ChoiceType::class, array(
-                'required' => true,
-                'choices' => CategoryTypeEnum::getAvailableTypes(),
-                'choices_as_values' => true,
-                'choice_label' => function($choice) {
-                    return CategoryTypeEnum::getTypeName($choice);
-                },
-                'label'=>'Categorie',
-                ))->add('quantityAlert',IntegerType::class,array('label'=>'Alerte Quantité'))->add('price',TextType::class,array('label'=>'Prix'))->add('expirationDate',DateTimeType::class,array('label'=>'Date d\'expiration'))->add('picture', FileType::class,array('label'=>'Photo', 'data_class' => null, 'required' => false))->add('visible')        ;
+                $builder
+                    ->add('reference', TextType::class, array(
+                        'label' => 'Référence',
+                    ))
+                    ->add('name', TextType::class, array(
+                        'label'=>'Nom',
+                    ))
+                    ->add('description')
+                    ->add('category', ChoiceType::class, array(
+                        'label' => 'Catégorie',
+                        'required' => true,
+                        'choices' => CategoryTypeEnum::getAvailableTypes(),
+                        'choices_as_values' => true,
+                        'choice_label' => function($choice) {
+                            return CategoryTypeEnum::getTypeName($choice);
+                        },
+                    ))
+                    ->add('quantityAlert', IntegerType::class,
+                        array(
+                            'label'=>'Alerte Quantité',
+                        ))
+                    ->add('price',TextType::class,
+                        array('label'=>'Prix',
+                        ))
+                    ->add('expirationDate', DateTimeType::class, array(
+                        'label'=>'Date d\'expiration',
+                    ))
+                    ->add('picture', FileType::class, array(
+                        'label'=>'Photo', 'data_class' => null,
+                        'required' => false,
+                    ))
+                    ->add('visible')
+                ;
             }
         } else {
-            $builder->add('reference')->add('name',TextType::class,array('label'=>'Nom'))->add('description')
-                    ->add('category',ChoiceType::class, array(
-                'required' => true,
-                'choices' => CategoryTypeEnum::getAvailableTypes(),
-                'choices_as_values' => true,
-                'choice_label' => function($choice) {
-                    return CategoryTypeEnum::getTypeName($choice);
-                },
-                'label'=>'Categorie',
-                ))->add('quantity',IntegerType::class,array('label'=>'Quantité'))->add('quantityAlert',IntegerType::class,array('label'=>'Alerte Quantité'))->add('price',TextType::class,array('label'=>'Prix'))->add('expirationDate',DateTimeType::class,array('label'=>'Date d\'expiration'))->add('picture',FileType::class,array('label'=>'Photo', 'data_class' => null, 'required' => false))->add('visible')        ;
-            }
+            $builder
+                ->add('reference', TextType::class, array(
+                    'label' => 'Référence',
+                ))
+                ->add('name', TextType::class, array(
+                    'label'=>'Nom'
+                ))
+                ->add('description', TextType::class, array(
+                    'label' => 'Description',
+                ))
+                ->add('category',ChoiceType::class, array(
+                    'label'=>'Catégorie',
+                    'required' => true,
+                    'choices' => CategoryTypeEnum::getAvailableTypes(),
+                    'choices_as_values' => true,
+                    'choice_label' => function($choice) {
+                        return CategoryTypeEnum::getTypeName($choice);
+                    },
+                ))
+                ->add('quantity',IntegerType::class,array('label'=>'Quantité'))
+                ->add('quantityAlert',IntegerType::class,array('label'=>'Alerte Quantité'))
+                ->add('price',TextType::class,array('label'=>'Prix'))
+                ->add('expirationDate',DateTimeType::class,array('label'=>'Date d\'expiration'))
+                ->add('picture',FileType::class,array('label'=>'Photo', 'data_class' => null, 'required' => false))
+                ->add('visible')
+            ;
+        }
     }
-    
+
     /**
      * {@inheritdoc}
      */

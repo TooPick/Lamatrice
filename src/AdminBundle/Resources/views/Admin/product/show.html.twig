@@ -1,74 +1,79 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 
 {% block admin_content %}
-    <h1>Product</h1>
+    <div class="row text-center">
+        <h1>Produit : <span class="colored">{{ product.name }}</span></h1>
+    </div>
 
-    <table class="table table-striped">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ product.id }}</td>
-            </tr>
-            <tr>
-                <th>Reference</th>
-                <td>{{ product.reference }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ product.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ product.description }}</td>
-            </tr>
-            <tr>
-                <th>Categorie</th>
-                <td>{{ product.category }}</td>
-            </tr>
-            <tr>
-                <th>Quantité</th>
-                <td>{{ product.quantity }}</td>
-            </tr>
-            <tr>
-                <th>Alerte quantité</th>
-                <td>{{ product.quantityAlert }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ product.price }}</td>
-            </tr>
-            <tr>
-                <th>Date d'expiration</th>
-                <td>{% if product.expirationDate %}{{ product.expirationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Photo</th>
-                {% if product.picture != null %}
-                    {% set image_product = asset('uploads/products/' ~ product.picture) %}
-                {% else %}
-                    {% set image_product = asset('img/default-product.png') %}
-                {% endif %}
-                <td><img style='height: 300px; width: 250px; object-fit: cover' src="{{ image_product }}" alt="{{ product.name }}"/></td>
-            </tr>
-            <tr>
-                <th>Visible</th>
-                {% if product.visible == 1 %}
-                    <td>Visible</td>
-                {% else %}
-                    <td>Non visible</td>
-                {% endif %}
-            </tr>
-        </tbody>
-    </table>
+    <br>
 
-    <ul>
-        <li>
-            <br><a class="aa-browse-btn" href="{{ path('admin_product_edit', { 'id': product.id }) }}">Modifier</a>
-        </li>
-        <li>
+    <div class="row">
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ product.id }}</td>
+                </tr>
+                <tr>
+                    <th>Référence</th>
+                    <td>{{ product.reference }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ product.name }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ product.description }}</td>
+                </tr>
+                <tr>
+                    <th>Catégorie</th>
+                    <td>{{ getCategoryLabel(product.category) }}</td>
+                </tr>
+                <tr>
+                    <th>Quantité</th>
+                    <td>{{ product.quantity }}</td>
+                </tr>
+                <tr>
+                    <th>Alerte quantité</th>
+                    <td>{{ product.quantityAlert }}</td>
+                </tr>
+                <tr>
+                    <th>Prix</th>
+                    <td>{{ product.price }} €</td>
+                </tr>
+                <tr>
+                    <th>Date d'expiration</th>
+                    <td>{% if product.expirationDate %}{{ product.expirationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Photo</th>
+                    {% if product.picture != null %}
+                        {% set image_product = asset('uploads/products/' ~ product.picture) %}
+                    {% else %}
+                        {% set image_product = asset('img/default-product.png') %}
+                    {% endif %}
+                    <td><img style='height: 300px; width: 250px; object-fit: cover' src="{{ image_product }}" alt="{{ product.name }}"/></td>
+                </tr>
+                <tr>
+                    <th>Visible</th>
+                    {% if product.visible %}
+                        <td>Visible</td>
+                    {% else %}
+                        <td>Non visible</td>
+                    {% endif %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row text-center">
+        <p>
+            <a class="aa-browse-btn" href="{{ path('admin_product_edit', { 'id': product.id }) }}">Modifier <i class="fa fa-wrench" aria-hidden="true"></i></a>
             {{ form_start(delete_form) }}
-            <br><input class="aa-browse-btn" type="submit" value="Supprimer">
+            <button class="aa-browse-btn" type="submit" >Supprimer <i class='fa fa-trash-o' aria-hidden='true'></i></button>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </p>
+    </div>
+
 {% endblock %}

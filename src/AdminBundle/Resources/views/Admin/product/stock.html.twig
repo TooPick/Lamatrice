@@ -5,40 +5,56 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/media/css/jquery.dataTables.min.css') }}">
     <script src="{{ asset('DataTables/media/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/csv.js') }}"></script>
-    
+
     <h1>Liste des stocks</h1>
 
-    <table id ="stock" class="display" cellspacing="0" width="100%">
-        <thead>
+    <div class="row">
+        <a class="aa-browse-btn" id="csv" href="#" >Exporter <i class="fa fa-download" aria-hidden="true"></i></a>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <ul class="list-inline">
+            <li>
+                <input  id="fileCsv" type="file"  id="file_upload" />
+            </li>
+            <li>
+                <a class="aa-browse-btn" id="cmp" href="#" >Comparer <i class="fa fa-exchange" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <table id ="stock" class="display" cellspacing="0" width="100%">
+            <thead>
             <tr>
                 <th>Id</th>
-                <th>Reference</th>
+                <th>Référence</th>
                 <th>Nom</th>
                 <th>Quantité</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td><a href="{{ path('admin_product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
-                <td>{{ product.reference }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.quantity }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_stock_edit', { 'id': product.id }) }}">Modifier</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-        <a class="aa-browse-btn" id="csv" href="#" >Exporter</a></br></br>
-        <input  id="fileCsv" type="file"  id="file_upload" /><br> <a class="aa-browse-btn" id="cmp" href="#" >Comparer</a>
-    <script> 
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td><a href="{{ path('admin_product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                    <td>{{ product.reference }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>
+                        <a class="aa-browse-btn" href="{{ path('admin_stock_edit', { 'id': product.id }) }}">Modifier <i class="fa fa-wrench" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript">
         $('#stock').DataTable({
             "language": {
                 "url": "{{ asset('DataTables/French.json') }}"

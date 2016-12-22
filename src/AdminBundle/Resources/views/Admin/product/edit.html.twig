@@ -1,24 +1,29 @@
 {% extends 'AdminBundle::layout.html.twig' %}
 
 {% block admin_content %}
-    <h1>Modification</h1>
+    <div class="row text-center">
+        <h1>Modification : <span class="colored">{{ product.name }}</span></h1>
+    </div>
 
-    {{ form_start(edit_form) }}
+    <div class="row">
+        {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input class="aa-browse-btn" type="submit" value="Modifier" />
-    {{ form_end(edit_form) }}
 
-    <ul>
+        <div class="row text-center">
+            <button class="aa-browse-btn" type="submit" >Modifier <i class="fa fa-wrench" aria-hidden="true"></i></button>
+        </div>
+        {{ form_end(edit_form) }}
+    </div>
+
+    <div class="row text-center">
         {% set currentPath = path(app.request.attributes.get('_route'),
-                       app.request.attributes.get('_route_params')) %}
+        app.request.attributes.get('_route_params')) %}
         {% set path = currentPath|split('/') %}
-            
-        <li>
-            {{ form_start(delete_form) }}
-                {% if path[path|length-1] == "edit" %}
-                    <br><input class="aa-browse-btn" type="submit" value="Supprimer">
-                {% endif %}
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        {{ form_start(delete_form) }}
+        {% if path[path|length-1] == "edit" %}
+            <br><button class="aa-browse-btn" type="submit" >Supprimer <i class="fa fa-trash-o" aria-hidden="true"></i></button>
+        {% endif %}
+        {{ form_end(delete_form) }}
+    </div>
+
 {% endblock %}

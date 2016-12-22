@@ -74,6 +74,6 @@ class PictureUploadListener
         $filename = $entity->getPicture();
 
         if($filename != null)
-            unlink($filename);
+            unlink($this->uploader->getTargetDir() . '/' . $filename);
     }
 }

@@ -5,21 +5,23 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/media/css/jquery.dataTables.min.css') }}">
     <script src="{{ asset('DataTables/media/js/jquery.dataTables.min.js') }}"></script>
     <h1>Liste des produits</h1>
-    
+
+    <p><a class="aa-browse-btn" href="{{ path('admin_product_new') }}">Ajouter un produit <i class="fa fa-plus-square" aria-hidden="true"></i></a></p>
+
     <table id ="liste" class="display" cellspacing="0" width="100%">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Reference</th>
-                <th>Nom</th>
-                <th>Categorie</th>
-                <th>Quantité</th>
-                <th>Alerte quantité</th>
-                <th>Prix</th>
-                <th>Date d'expiration</th>
-                <th>Visible</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Reference</th>
+            <th>Nom</th>
+            <th>Categorie</th>
+            <th>Quantité</th>
+            <th>Alerte quantité</th>
+            <th>Prix</th>
+            <th>Date d'expiration</th>
+            <th>Visible</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for product in products %}
@@ -32,36 +34,26 @@
                 <td>{{ product.quantityAlert }}</td>
                 <td>{{ product.price }}</td>
                 <td>{% if product.expirationDate %}{{ product.expirationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-               {% if product.visible == 1 %}
+                {% if product.visible == 1 %}
                     <td>Visible</td>
                 {% else %}
                     <td>Non visible</td>
                 {% endif %}
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_product_show', { 'id': product.id }) }}">Infos</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_product_edit', { 'id': product.id }) }}">Modifier</a>
-                        </li>
-                    </ul>
+                    <a class="aa-browse-btn" href="{{ path('admin_product_show', { 'id': product.id }) }}">Infos <i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                    <a class="aa-browse-btn" href="{{ path('admin_product_edit', { 'id': product.id }) }}">Editer <i class="fa fa-wrench" aria-hidden="true"></i></a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a class="aa-browse-btn" href="{{ path('admin_product_new') }}">Rajouter un produit</a>
-        </li>
-    </ul>
-    <script> 
+    <script type="text/javascript">
         $('#liste').DataTable({
             "language": {
                 "url": "{{ asset('DataTables/French.json') }}"
             }
         });
     </script>
+
 {% endblock %}
