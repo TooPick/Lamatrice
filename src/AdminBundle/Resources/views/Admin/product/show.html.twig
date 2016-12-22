@@ -3,7 +3,7 @@
 {% block admin_content %}
     <h1>Product</h1>
 
-    <table>
+    <table class="table table-striped">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -43,7 +43,12 @@
             </tr>
             <tr>
                 <th>Photo</th>
-                <td>{{ product.picture }}</td>
+                {% if product.picture != null %}
+                    {% set image_product = asset('uploads/products/' ~ product.picture) %}
+                {% else %}
+                    {% set image_product = asset('img/default-product.png') %}
+                {% endif %}
+                <td><img style='height: 300px; width: 250px; object-fit: cover' src="{{ image_product }}" alt="{{ product.name }}"/></td>
             </tr>
             <tr>
                 <th>Visible</th>
