@@ -2,6 +2,10 @@
 
 namespace AppBundle\Enum;
 
+/**
+ * Représente les status qu'un panier peut avoir.
+ * @package AppBundle\Enum
+ */
 abstract class StatusTypeEnum
 {
     const TYPE_UNTREATED = "untreated";
@@ -16,6 +20,7 @@ abstract class StatusTypeEnum
     ];
 
     /**
+     * Renvoi le nom d'un status à partir de sa clé.
      * @param  string $typeShortName
      * @return string
      */
@@ -29,6 +34,7 @@ abstract class StatusTypeEnum
     }
 
     /**
+     * Renvoi la liste des status disponibles.
      * @return array<string>
      */
     public static function getAvailableTypes()

@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CartProduct
+ * Produit dans le panier
  *
  * @ORM\Table(name="cart_product")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CartProductRepository")
@@ -22,6 +22,7 @@ class CartProduct
     private $id;
 
     /**
+     * Quantité du produit dans le panier.
      * @var int
      *
      * @ORM\Column(name="quantity", type="integer")
@@ -29,18 +30,21 @@ class CartProduct
     private $quantity;
 
     /**
+     * Panier dans lequel est le produit.
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cart", inversedBy="cartProducts")
      * @ORM\JoinColumn(nullable=false)
      */
     private $cart;
 
     /**
+     * Produit qui est dans le panier.
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Product")
      * @ORM\JoinColumn(nullable=false)
      */
     private $product;
 
     /**
+     * Quantité qui a été traitée par le magasinier.
      * @var int
      *
      * @ORM\Column(name="processed_quantity", type="integer")

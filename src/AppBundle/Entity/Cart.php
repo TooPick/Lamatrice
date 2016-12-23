@@ -6,7 +6,7 @@ use AppBundle\Enum\StatusTypeEnum;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Cart
+ * Panier
  *
  * @ORM\Table(name="cart")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CartRepository")
@@ -23,6 +23,7 @@ class Cart
     private $id;
 
     /**
+     * Défini si le panier est validé (que l'utilisateur a payé le panier).
      * @var bool
      *
      * @ORM\Column(name="validated", type="boolean")
@@ -30,17 +31,20 @@ class Cart
     private $validated;
 
     /**
+     * Utilisateur qui a effectué la commande.
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="carts")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
+     * Représente les produits dans le panier.
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\CartProduct", mappedBy="cart", cascade={"remove"})
      */
     private $cartProducts;
 
     /**
+     * Statut du panier : Non Traité | En Cours De Traitement | Traité.
      * @var string
      * @ORM\Column(name="status", type="string", length=255, nullable=false)
      */

@@ -2,6 +2,11 @@
 
 namespace AppBundle\Enum;
 
+/**
+ * Représente les catégories de produits disponibles dans le magasin.
+ *
+ * @package AppBundle\Enum
+ */
 abstract class CategoryTypeEnum
 {
     const TYPE_STATIONERY = "stationery";
@@ -14,6 +19,7 @@ abstract class CategoryTypeEnum
     ];
 
     /**
+     * Renvoi le nom d'une catégorie à partir de sa clé.
      * @param  string $typeShortName
      * @return string
      */
@@ -27,6 +33,7 @@ abstract class CategoryTypeEnum
     }
 
     /**
+     * Renvoi la liste des catégories disponibles.
      * @return array<string>
      */
     public static function getAvailableTypes()

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Product
+ * Produit
  *
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
@@ -24,6 +24,7 @@ class Product
     private $id;
 
     /**
+     * Référence du produit.
      * @var string
      *
      * @ORM\Column(name="reference", type="string", length=255, unique=true)
@@ -31,6 +32,7 @@ class Product
     private $reference;
 
     /**
+     * Nom du produit.
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -38,6 +40,7 @@ class Product
     private $name;
 
     /**
+     * Description du produit.
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
@@ -45,12 +48,14 @@ class Product
     private $description;
 
     /**
+     * Catégorie du produit.
      * @var string
      * @ORM\Column(name="category", type="string", length=255, nullable=false)
      */
     private $category;
 
     /**
+     * Quantité du produit en stock.
      * @var int
      *
      * @ORM\Column(name="quantity", type="integer")
@@ -58,6 +63,7 @@ class Product
     private $quantity;
 
     /**
+     * Seuil d'alerte du stock du produit.
      * @var int
      *
      * @ORM\Column(name="quantityAlert", type="integer")
@@ -65,6 +71,7 @@ class Product
     private $quantityAlert;
 
     /**
+     * Prix unitaire du produit.
      * @var int
      *
      * @ORM\Column(name="price", type="integer")
@@ -72,6 +79,7 @@ class Product
     private $price;
 
     /**
+     * Date d'expiration du produit.
      * @var \DateTime
      *
      * @ORM\Column(name="expirationDate", type="datetime")
@@ -79,6 +87,7 @@ class Product
     private $expirationDate;
 
     /**
+     * Image du produit.
      * @var string
      *
      * @ORM\Column(name="picture", type="string", length=255, nullable=true)
@@ -87,6 +96,7 @@ class Product
     private $picture;
 
     /**
+     * Défini si le produit est visible par les clients.
      * @var bool
      *
      * @ORM\Column(name="visible", type="boolean")
