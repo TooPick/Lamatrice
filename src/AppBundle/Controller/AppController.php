@@ -9,6 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AppController extends Controller
 {
+	/**
+	 * Page d'accueil du site : affiche un aperçu des produits disponibles dans les deux catégories (plastique et papeterie).
+	 */
     public function indexAction()
     {
     	$em = $this->getDoctrine()->getManager();
@@ -30,6 +33,9 @@ class AppController extends Controller
         ));
     }
 
+	/**
+	 * Recherche un mot clef dans la base de données et affiche les produits trouvés.
+	 */
 	public function searchAction(Request $request) {
 		$searchTerm = $request->get('search-term');
 
@@ -48,6 +54,9 @@ class AppController extends Controller
 		));
 	}
 
+	/**
+	 * Affiche les produits disponibles dans la catégorie donnée en paramètre.
+	 */
     public function productsListAction($type) {
     	$em = $this->getDoctrine()->getManager();
     	$productRepository = $em->getRepository("AppBundle:Product");
@@ -70,6 +79,9 @@ class AppController extends Controller
         ));
     }
 
+	/**
+	 * Affiche la fiche du produit donné en paramètre.
+	 */
     public function productAction(Product $product) {
 		if(!$product->getVisible()) {
 			throw $this->createNotFoundException('Erreur: Produit introuvable.');
@@ -80,6 +92,9 @@ class AppController extends Controller
         ));
     }
 
+	/**
+	 * Page de contact (uniquement visuelle, pas d'envoi de mail pour le moment)
+	 */
     public function contactAction(){
         return $this->render('AppBundle:App:contact.html.twig');
     }

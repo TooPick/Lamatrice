@@ -11,6 +11,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CartController extends Controller
 {
+    /**
+     * Affiche le contenu du panier courant.
+     */
     public function showCartAction()
     {
         $currentCartId = $this->get('session')->get('user_current_cart_id');
@@ -32,6 +35,9 @@ class CartController extends Controller
         ));
     }
 
+    /**
+     * Affiche le contenu du panier en paramètre (uniquement si il appartient à l'utilisateur courant).
+     */
     public function previewCartAction(Cart $cart)
     {
         $user = $this->getUser();
@@ -43,6 +49,9 @@ class CartController extends Controller
         ));
     }
 
+    /**
+     * Ajoute un produit au panier courant, si la quantité demandée est disponible dans les stocks.
+     */
     public function addProductAction(Product $product, $quantity)
     {
         $currentCartId = $this->get('session')->get('user_current_cart_id');
@@ -113,10 +122,12 @@ class CartController extends Controller
             }
         }
 
-        //TODO : redirect vers page article ou panier
         return $this->redirectToRoute('app_homepage');
     }
 
+    /**
+     * Supprime un article du panier courant.
+     */
     public function removeProductAction(Product $product)
     {
         $currentCartId = $this->get('session')->get('user_current_cart_id');
@@ -155,10 +166,12 @@ class CartController extends Controller
             }
         }
 
-        //TODO : redirect vers page article ou panier
         return $this->redirectToRoute('app_homepage');
     }
 
+    /**
+     * Défini le panier passé en paramètre comme panier courant.
+     */
     public function useCartAction(Cart $cart)
     {
         $user = $this->getUser();
@@ -176,7 +189,10 @@ class CartController extends Controller
 
         return $this->redirectToRoute('user_account');
     }
-    
+
+    /**
+     * Sauvegarde le panier dans le compte de l'utilisateur pour l'utiliser plus tard.
+     */
     public function saveCartAction()
     {
         $this->get('session')->set('user_current_cart_id', null);
@@ -185,6 +201,9 @@ class CartController extends Controller
         return $this->redirectToRoute('app_homepage');
     }
 
+    /**
+     * Supprime le panier passé en paramètre.
+     */
     public function deleteCartAction(Cart $cart)
     {
         $user = $this->getUser();
@@ -205,6 +224,9 @@ class CartController extends Controller
         return $this->redirectToRoute('user_account');
     }
 
+    /**
+     * Affiche la page de paiement et si la paramètre est "validate" le paiement a été éffectué et le panier devient validé.
+     */
     public function checkoutAction($state)
     {
         $currentCartId = $this->get('session')->get('user_current_cart_id');

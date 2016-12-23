@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class UserController extends Controller
 {
+    /**
+     * Affiche les informations de l'utilisateur, ses anciens paniers, les paniers sauvegardé.
+     */
     public function accountAction()
     {
         $user = $this->getUser();

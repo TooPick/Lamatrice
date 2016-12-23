@@ -13,8 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ProductController extends Controller
 {
     /**
-     * Lists all product entities.
-     *
+     * Liste tous les produits disponibles sur le site
      */
     public function indexAction()
     {
@@ -28,7 +27,7 @@ class ProductController extends Controller
     }
     
     /**
-     * Lists all product stock entities.
+     * Liste tous les produits en stock dans le magasin.
      */
     public function stockAction()
     {
@@ -47,8 +46,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Creates a new product entity.
-     *
+     * Créer un nouveau produit
      */
     public function newAction(Request $request)
     {
@@ -71,8 +69,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Finds and displays a product entity.
-     *
+     * Affiche les informations d'un produit
      */
     public function showAction(Product $product)
     {
@@ -85,8 +82,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing product entity.
-     *
+     * Edite les information d'un produit.
      */
     public function editAction(Request $request, Product $product)
     {
@@ -108,6 +104,9 @@ class ProductController extends Controller
         ));
     }
 
+    /**
+     * Edite la quantité d'un produit disponible dans les stocks.
+     */
     public function editStockAction(Request $request, Product $product)
     {
         $deleteForm = $this->createDeleteForm($product);
@@ -129,8 +128,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Deletes a product entity.
-     *
+     * Supprime un produit
      */
     public function deleteAction(Request $request, Product $product)
     {
@@ -147,11 +145,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Creates a form to delete a product entity.
-     *
-     * @param Product $product The product entity
-     *
-     * @return \Symfony\Component\Form\Form The form
+     * Créer un formulaire pour supprimer un produit.
      */
     private function createDeleteForm(Product $product)
     {
@@ -163,7 +157,7 @@ class ProductController extends Controller
     }
 
     /**
-     * List all alerts entities
+     * Liste toutes les alertes sur les produits (alertes de stocks et alertes de péremption)
      */
     public function alertsAction(){
         $em = $this->getDoctrine()->getManager();

@@ -18,7 +18,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Affiche la liste de tous les paniers validés par les utilisateurs, c'est à dire les paniers que l'utilisateur à "payés" et non traité par le magasinier
+     * Affiche la liste de tous les paniers validés par les utilisateurs, c'est à dire les paniers que l'utilisateur à "payés" et non traité par le magasinier.
      **/
     public function cartsListAction(){
         $em = $this->getDoctrine()->getManager();
@@ -35,7 +35,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Affiche la liste de tous les paniers que l'administrateur a décidé de mettre en cours de traitement
+     * Affiche la liste de tous les paniers que l'administrateur a décidé de mettre en cours de traitement.
      **/
     public function beingTreatedCartsListAction(){
         $em = $this->getDoctrine()->getManager();
