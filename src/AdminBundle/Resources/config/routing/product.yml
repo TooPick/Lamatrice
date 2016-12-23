@@ -2,14 +2,12 @@ admin_product_index:
     path:     /
     defaults: { _controller: "AdminBundle:Product:index" }
     methods:  GET
+
 admin_product_stock:
     path:     /stock
     defaults: { _controller: "AdminBundle:Product:stock" }
     methods:  GET
-admin_product_alerts:
-    path:     /alerts
-    defaults: { _controller: "AdminBundle:Product:alerts" }
-    methods:  GET
+
 admin_product_show:
     path:     /{id}/show
     defaults: { _controller: "AdminBundle:Product:show" }
@@ -24,11 +22,18 @@ admin_product_edit:
     path:     /{id}/edit
     defaults: { _controller: "AdminBundle:Product:edit" }
     methods:  [GET, POST]
+
 admin_stock_edit:
     path:     /{id}/stockEdit
     defaults: { _controller: "AdminBundle:Product:editStock" }
     methods:  [GET, POST]
+
 admin_product_delete:
     path:     /{id}/delete
     defaults: { _controller: "AdminBundle:Product:delete" }
     methods:  DELETE
+
+admin_product_alerts:
+    path:     /alerts
+    defaults: { _controller: "AdminBundle:Product:alerts" }
+    methods:  GET

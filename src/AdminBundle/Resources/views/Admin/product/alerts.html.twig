@@ -8,70 +8,88 @@
 
     <h1>Liste des alertes</h1>
 
+    <div class="row">
+        <ul class="nav nav-tabs aa-products-tab">
+            <li class="active"><a href="#stock" data-toggle="tab">Alertes de stocks <span class="badge badge-colored">{{ products|length }}</span></a></li>
+            <li><a href="#expiration" data-toggle="tab">Alertes de péremptions <span class="badge badge-coloredp">{{ productsP|length }}</span></a></li>
+        </ul>
 
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="stock">
+                <h3>Quantité en stock inférieure au seuil minimal</h3>
+                <table id ="stock-table" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Référence</th>
+                            <th>Nom</th>
+                            <th>Quantité</th>
+                            <th>Alerte Quantité</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td><a href="{{ path('admin_product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                            <td>{{ product.reference }}</td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.quantity }}</td>
+                            <td>{{product.quantityAlert}}</td>
+                            <td>
+                                <a class="aa-browse-btn" href="{{ path('admin_product_show', {id: product.id}) }}">Infos <i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                                <a class="aa-browse-btn" href="{{ path('admin_product_edit', {id: product.id}) }}">Editer <i class="fa fa-wrench" aria-hidden="true"></i></a>
+                                <a class="aa-browse-btn" href="{{ path('admin_stock_edit', {id: product.id}) }}">Editer stock <i class="fa fa-sliders" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
- <div class="row">
-    <div class ="col-md-6">
-        <h3>Quantité en stock inférieure au seuil minimal</h3>
-        <table id ="stock" class="display" cellspacing="0" width="100%">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Référence</th>
-                <th>Nom</th>
-                <th>Quantité</th>
-                <th>Alerte Quantité</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for product in products %}
-                <tr>
-                    <td><a href="{{ path('admin_product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
-                    <td>{{ product.reference }}</td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.quantity }}</td>
-                    <td>{{product.quantityAlert}}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+            <div class="tab-pane fade" id="expiration">
+                <h3>Produits qui ont atteint la date de péremption</h3>
+                <table id ="expiration-table" class="display" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Référence</th>
+                        <th>Nom</th>
+                        <th>Quantité</th>
+                        <th>Date de péremption</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in productsP %}
+                        <tr>
+                            <td><a href="{{ path('admin_product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                            <td>{{ product.reference }}</td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.quantity}}</td>
+                            <td>{{ product.expirationDate | date('Y-m-d')}}</td>
+                            <td>
+                                <a class="aa-browse-btn" href="{{ path('admin_product_show', {id: product.id}) }}">Infos <i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                                <a class="aa-browse-btn" href="{{ path('admin_product_edit', {id: product.id}) }}">Editer <i class="fa fa-wrench" aria-hidden="true"></i></a>
+                                <a class="aa-browse-btn" href="{{ path('admin_stock_edit', {id: product.id}) }}">Editer stock <i class="fa fa-sliders" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <div class ="col-md-6">
-        <h3>Produits qui ont atteint la date de péremption</h3>
-        <table id ="peremption" class="display" cellspacing="0" width="100%">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Référence</th>
-                <th>Nom</th>
-                <th>Quantité</th>
-                <th>Alerte Quantité</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for product in productsP %}
-                <tr>
-                    <td><a href="{{ path('admin_product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
-                    <td>{{ product.reference }}</td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.quantity}}</td>
-                    <td>{{ product.expirationDate | date('Y-m-d')}}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</div>
 
     <script type="text/javascript">
-        $('#stock').DataTable({
+        $('#stock-table').DataTable({
             "language": {
                 "url": "{{ asset('DataTables/French.json') }}"
             }
         });
     </script>
-     <script type="text/javascript">
-        $('#peremption').DataTable({
+    <script type="text/javascript">
+        $('#expiration-table').DataTable({
             "language": {
                 "url": "{{ asset('DataTables/French.json') }}"
             }

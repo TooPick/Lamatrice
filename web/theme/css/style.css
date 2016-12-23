@@ -13,11 +13,18 @@ AJOUT LAMATRICE
 }
 
 .alert {
-  margin-top: 15px;
+  display: inline;
+  position: relative;
+  float: left;
+  width: 100%;
 }
 
 #admin-navbar {
   margin: 15px 0;
+}
+
+.badge-colored {
+  background-color: #ff6666 !important;
 }
 
 /*
