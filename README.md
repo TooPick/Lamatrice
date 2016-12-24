@@ -43,3 +43,17 @@ Cette base de données contient deux utilisateurs :
   * Mot de passe : test
   
 La base de données contient aussi 30 produits dispersés dans les deux catégories disponibles.
+
+ * Vous pouvez aussi créer un utilisateur via la commande suivante :
+
+`php bin/console fos:user:create`
+
+Et suivez les indications.
+
+ * Pour donner un role administrateur à un utilisateur exécutez :
+
+`php bin/console fos:user:promote`
+
+Entrez le nom d'utilisateur puis le role `ROLE_ADMIN`
+
+
