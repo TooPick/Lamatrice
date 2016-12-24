@@ -32,7 +32,7 @@ Ou bien
 
 Si vous souchaitez concerver ce qui est déjà présent dans la base.
 
-Cette base de donnée contient deux utilisateur :
+Cette base de données contient deux utilisateurs :
 
  * Un administrateur
   * Identifiant : admin
