@@ -31,3 +31,15 @@ Ou bien
 `php bin/console doctrine:fixtures:load --append`
 
 Si vous souchaitez concerver ce qui est déjà présent dans la base.
+
+Cette base de donnée contient deux utilisateur :
+
+ * Un administrateur
+  * Identifiant : admin
+  * Mot de passe : test
+  
+ * Un utilisateur simple
+  * Identifiant : user
+  * Mot de passe : test
+  
+La base de données contient aussi 30 produits dispersés dans les deux catégories disponibles.
