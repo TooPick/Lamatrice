@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>     &raquo; Compilation errors
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/AdminBundle.html">\AdminBundle</a></li>
+                                                        <li><a href="../namespaces/AppBundle.html">\AppBundle</a></li>
+                                                        <li><a href="../namespaces/UserBundle.html">\UserBundle</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">99</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+
+            <ul class="side-nav nav nav-list">
+                <li class="nav-header">Navigation</li>
+                                                                            <li><a href="#AdminBundle\AdminBundle.php"><i class="icon-file"></i> AdminBundle\AdminBundle.php</a></li>
+                                                                                                    <li><a href="#AdminBundle\Controller\AdminController.php"><i class="icon-file"></i> AdminBundle\Controller\AdminController.php</a></li>
+                                                                                                    <li><a href="#AdminBundle\Controller\ProductController.php"><i class="icon-file"></i> AdminBundle\Controller\ProductController.php</a></li>
+                                                                                                    <li><a href="#AdminBundle\Form\ProductType.php"><i class="icon-file"></i> AdminBundle\Form\ProductType.php</a></li>
+                                                                                                    <li><a href="#AppBundle\AppBundle.php"><i class="icon-file"></i> AppBundle\AppBundle.php</a></li>
+                                                                                                    <li><a href="#AppBundle\Controller\AppController.php"><i class="icon-file"></i> AppBundle\Controller\AppController.php</a></li>
+                                                                                                    <li><a href="#AppBundle\Controller\CartController.php"><i class="icon-file"></i> AppBundle\Controller\CartController.php</a></li>
+                                                                                                    <li><a href="#AppBundle\DataFixtures\ORM\LoadProductData.php"><i class="icon-file"></i> AppBundle\DataFixtures\ORM\LoadProductData.php</a></li>
+                                                                                                    <li><a href="#AppBundle\Entity\Cart.php"><i class="icon-file"></i> AppBundle\Entity\Cart.php</a></li>
+                                                                                                    <li><a href="#AppBundle\Entity\CartProduct.php"><i class="icon-file"></i> AppBundle\Entity\CartProduct.php</a></li>
+                                                                                                    <li><a href="#AppBundle\Entity\Product.php"><i class="icon-file"></i> AppBundle\Entity\Product.php</a></li>
+                                                                                                    <li><a href="#AppBundle\Enum\CategoryTypeEnum.php"><i class="icon-file"></i> AppBundle\Enum\CategoryTypeEnum.php</a></li>
+                                                                                                    <li><a href="#AppBundle\Enum\StatusTypeEnum.php"><i class="icon-file"></i> AppBundle\Enum\StatusTypeEnum.php</a></li>
+                                                                                                    <li><a href="#AppBundle\EventListener\PictureUploadListener.php"><i class="icon-file"></i> AppBundle\EventListener\PictureUploadListener.php</a></li>
+                                                                                                    <li><a href="#AppBundle\FileUploader.php"><i class="icon-file"></i> AppBundle\FileUploader.php</a></li>
+                                                                                                    <li><a href="#AppBundle\Repository\CartProductRepository.php"><i class="icon-file"></i> AppBundle\Repository\CartProductRepository.php</a></li>
+                                                                                                    <li><a href="#AppBundle\Repository\CartRepository.php"><i class="icon-file"></i> AppBundle\Repository\CartRepository.php</a></li>
+                                                                                                    <li><a href="#AppBundle\Repository\ProductRepository.php"><i class="icon-file"></i> AppBundle\Repository\ProductRepository.php</a></li>
+                                                                                                    <li><a href="#AppBundle\Twig\CartExtension.php"><i class="icon-file"></i> AppBundle\Twig\CartExtension.php</a></li>
+                                                                                                    <li><a href="#AppBundle\Twig\ProductExtension.php"><i class="icon-file"></i> AppBundle\Twig\ProductExtension.php</a></li>
+                                                                                                    <li><a href="#UserBundle\Controller\UserController.php"><i class="icon-file"></i> UserBundle\Controller\UserController.php</a></li>
+                                                                                                    <li><a href="#UserBundle\DataFixtures\ORM\LoadUserData.php"><i class="icon-file"></i> UserBundle\DataFixtures\ORM\LoadUserData.php</a></li>
+                                                                                                    <li><a href="#UserBundle\Entity\User.php"><i class="icon-file"></i> UserBundle\Entity\User.php</a></li>
+                                                                                                    <li><a href="#UserBundle\Repository\UserRepository.php"><i class="icon-file"></i> UserBundle\Repository\UserRepository.php</a></li>
+                                                                                                    <li><a href="#UserBundle\UserBundle.php"><i class="icon-file"></i> UserBundle\UserBundle.php</a></li>
+                                                                    </ul>
+        </div>
+
+        <div class="span10 offset2">
+            <ul class="breadcrumb">
+                <li><a href="../"><i class="icon-remove-sign"></i></a><span class="divider">\</span></li>
+                <li>Compilation Errors</li>
+            </ul>
+
+            
+                            <div class="package-contents">
+                                            <a name="AdminBundle\AdminBundle.php" id="AdminBundle\AdminBundle.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AdminBundle\AdminBundle.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for class \AdminBundle\AdminBundle</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AdminBundle\Controller\AdminController.php" id="AdminBundle\Controller\AdminController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AdminBundle\Controller\AdminController.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>No summary for class \AdminBundle\Controller\AdminController</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>74</td>
+                                        <td>Argument $panier is missing from the Docblock of treatCartAction</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AdminBundle\Controller\ProductController.php" id="AdminBundle\Controller\ProductController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AdminBundle\Controller\ProductController.php
+                            <small style="float: right;padding-right: 10px;">10</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>51</td>
+                                        <td>Argument $request is missing from the Docblock of newAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>74</td>
+                                        <td>Argument $product is missing from the Docblock of showAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>87</td>
+                                        <td>Argument $request is missing from the Docblock of editAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>87</td>
+                                        <td>Argument $product is missing from the Docblock of editAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>110</td>
+                                        <td>Argument $request is missing from the Docblock of editStockAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>110</td>
+                                        <td>Argument $product is missing from the Docblock of editStockAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>133</td>
+                                        <td>Argument $request is missing from the Docblock of deleteAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>133</td>
+                                        <td>Argument $product is missing from the Docblock of deleteAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>150</td>
+                                        <td>Argument $product is missing from the Docblock of createDeleteForm</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AdminBundle\Form\ProductType.php" id="AdminBundle\Form\ProductType.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AdminBundle\Form\ProductType.php
+                            <small style="float: right;padding-right: 10px;">5</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>16</td>
+                                        <td>No summary for class \AdminBundle\Form\ProductType</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>21</td>
+                                        <td>Argument $builder is missing from the Docblock of buildForm</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>21</td>
+                                        <td>Argument $options is missing from the Docblock of buildForm</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>94</td>
+                                        <td>Argument $resolver is missing from the Docblock of configureOptions</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\AppBundle.php" id="AppBundle\AppBundle.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\AppBundle.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for class \AppBundle\AppBundle</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\Controller\AppController.php" id="AppBundle\Controller\AppController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\Controller\AppController.php
+                            <small style="float: right;padding-right: 10px;">5</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>No summary for class \AppBundle\Controller\AppController</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>39</td>
+                                        <td>Argument $request is missing from the Docblock of searchAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>60</td>
+                                        <td>Argument $type is missing from the Docblock of productsListAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>85</td>
+                                        <td>Argument $product is missing from the Docblock of productAction</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\Controller\CartController.php" id="AppBundle\Controller\CartController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\Controller\CartController.php
+                            <small style="float: right;padding-right: 10px;">9</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>No summary for class \AppBundle\Controller\CartController</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>41</td>
+                                        <td>Argument $cart is missing from the Docblock of previewCartAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>55</td>
+                                        <td>Argument $product is missing from the Docblock of addProductAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>55</td>
+                                        <td>Argument $quantity is missing from the Docblock of addProductAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>131</td>
+                                        <td>Argument $product is missing from the Docblock of removeProductAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>175</td>
+                                        <td>Argument $cart is missing from the Docblock of useCartAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>207</td>
+                                        <td>Argument $cart is missing from the Docblock of deleteCartAction</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>230</td>
+                                        <td>Argument $state is missing from the Docblock of checkoutAction</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\DataFixtures\ORM\LoadProductData.php" id="AppBundle\DataFixtures\ORM\LoadProductData.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\DataFixtures\ORM\LoadProductData.php
+                            <small style="float: right;padding-right: 10px;">7</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>No summary for class \AppBundle\DataFixtures\ORM\LoadProductData</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>Argument $productNumber is missing from the Docblock of randomProduct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>Argument $type is missing from the Docblock of randomProduct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>No summary for method randomProduct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>34</td>
+                                        <td>Argument $manager is missing from the Docblock of load</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>34</td>
+                                        <td>No summary for method load()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\Entity\Cart.php" id="AppBundle\Entity\Cart.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\Entity\Cart.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>23</td>
+                                        <td>No summary for property $id</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\Entity\CartProduct.php" id="AppBundle\Entity\CartProduct.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\Entity\CartProduct.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>No summary for property $id</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\Entity\Product.php" id="AppBundle\Entity\Product.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\Entity\Product.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>24</td>
+                                        <td>No summary for property $id</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\Enum\CategoryTypeEnum.php" id="AppBundle\Enum\CategoryTypeEnum.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\Enum\CategoryTypeEnum.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\Enum\StatusTypeEnum.php" id="AppBundle\Enum\StatusTypeEnum.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\Enum\StatusTypeEnum.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\EventListener\PictureUploadListener.php" id="AppBundle\EventListener\PictureUploadListener.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\EventListener\PictureUploadListener.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>No summary for property $uploader</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\FileUploader.php" id="AppBundle\FileUploader.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\FileUploader.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>13</td>
+                                        <td>No summary for property $targetDir</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\Repository\CartProductRepository.php" id="AppBundle\Repository\CartProductRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\Repository\CartProductRepository.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\Repository\CartRepository.php" id="AppBundle\Repository\CartRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\Repository\CartRepository.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\Repository\ProductRepository.php" id="AppBundle\Repository\ProductRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\Repository\ProductRepository.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>13</td>
+                                        <td>Argument $term is missing from the Docblock of search</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>13</td>
+                                        <td>No summary for method search()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\Twig\CartExtension.php" id="AppBundle\Twig\CartExtension.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\Twig\CartExtension.php
+                            <small style="float: right;padding-right: 10px;">14</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>No summary for class \AppBundle\Twig\CartExtension</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>Argument $doctrine is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>Argument $container is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>20</td>
+                                        <td>No summary for method getName()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>No summary for method getFunctions()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>34</td>
+                                        <td>No summary for method retrieveCart()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>53</td>
+                                        <td>No summary for method getCurrentCart()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>59</td>
+                                        <td>No summary for method getCartProductsNumber()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>71</td>
+                                        <td>Argument $name is missing from the Docblock of getStatusLabel</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>71</td>
+                                        <td>No summary for method getStatusLabel()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>No summary for property $doctrine</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>No summary for property $container</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="AppBundle\Twig\ProductExtension.php" id="AppBundle\Twig\ProductExtension.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            AppBundle\Twig\ProductExtension.php
+                            <small style="float: right;padding-right: 10px;">11</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>8</td>
+                                        <td>No summary for class \AppBundle\Twig\ProductExtension</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>13</td>
+                                        <td>Argument $doctrine is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>13</td>
+                                        <td>Argument $container is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>13</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>19</td>
+                                        <td>No summary for method getName()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>24</td>
+                                        <td>No summary for method getFunctions()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>31</td>
+                                        <td>Argument $name is missing from the Docblock of getCategoryLabel</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>31</td>
+                                        <td>No summary for method getCategoryLabel()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>No summary for property $doctrine</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>No summary for property $container</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="UserBundle\Controller\UserController.php" id="UserBundle\Controller\UserController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            UserBundle\Controller\UserController.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for class \UserBundle\Controller\UserController</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="UserBundle\DataFixtures\ORM\LoadUserData.php" id="UserBundle\DataFixtures\ORM\LoadUserData.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            UserBundle\DataFixtures\ORM\LoadUserData.php
+                            <small style="float: right;padding-right: 10px;">4</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>No summary for class \UserBundle\DataFixtures\ORM\LoadUserData</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>Argument $manager is missing from the Docblock of load</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>No summary for method load()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="UserBundle\Entity\User.php" id="UserBundle\Entity\User.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            UserBundle\Entity\User.php
+                            <small style="float: right;padding-right: 10px;">4</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>41</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>23</td>
+                                        <td>No summary for property $id</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>28</td>
+                                        <td>No summary for property $carts</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="UserBundle\Repository\UserRepository.php" id="UserBundle\Repository\UserRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            UserBundle\Repository\UserRepository.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="UserBundle\UserBundle.php" id="UserBundle\UserBundle.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            UserBundle\UserBundle.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for class \UserBundle\UserBundle</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>No summary for method getParent()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                    </div>
+    </section>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/AdminBundle.html">\AdminBundle</a></li>
+                                                                            <li><a href="../namespaces/AppBundle.html">\AppBundle</a></li>
+                                                                            <li><a href="../namespaces/UserBundle.html">\UserBundle</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on December 24th, 2016 at 16:16.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

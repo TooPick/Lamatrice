@@ -1,0 +1,105 @@
+<?php
+
+namespace AppBundle\EventListener;
+
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
+use AppBundle\Entity\Product;
+use AppBundle\FileUploader;
+
+/**
+ * Classe qui upload les images d'un produit en fonction de son cycle de vie doctrine.
+ * @package AppBundle\EventListener
+ */
+class PictureUploadListener
+{
+    private $uploader;
+
+    /**
+     * PictureUploadListener constructor.
+     * @param FileUploader $uploader
+     */
+    public function __construct(FileUploader $uploader)
+    {
+        $this->uploader = $uploader;
+    }
+
+    /**
+     * Avant le persit du produit, l'image est téléchargée.
+     * @param LifecycleEventArgs $args
+     */
+    public function prePersist(LifecycleEventArgs $args)
+    {
+        $entity = $args->getEntity();
+
+        if(!$entity instanceof Product)
+            return;
+
+        $this->uploadFile($entity);
+    }
+
+    /**
+     * Avant l'update d'un produit, si l'image est modifiée, elle est téléchargée.
+     * @param PreUpdateEventArgs $args
+     */
+    public function preUpdate(PreUpdateEventArgs $args)
+    {
+        $entity = $args->getEntity();
+
+        if(!$entity instanceof Product)
+            return;
+
+        if($args->hasChangedField('picture'))
+        {
+            $filename = $args->getOldValue('picture');
+
+            if($entity->getPicture() != null) {
+                if($filename != null)
+                    unlink($this->uploader->getTargetDir() . '/' . $filename);
+
+                $this->uploadFile($entity);
+            } else
+                $entity->setPicture($filename);
+        }
+
+    }
+
+    /**
+     * Upload de l'image.
+     * @param $entity
+     */
+    private function uploadFile($entity)
+    {
+        if (!$entity instanceof Product) {
+            return;
+        }
+
+        $file = $entity->getPicture();
+
+        if (!$file instanceof UploadedFile) {
+            return;
+        }
+
+        $fileName = $this->uploader->upload($file);
+        $entity->setPicture($fileName);
+    }
+
+    /**
+     * Lors de la suppresison du produit, suppression de son image.
+     * @param LifecycleEventArgs $args
+     */
+    public function preRemove(LifecycleEventArgs $args)
+    {
+        $entity = $args->getEntity();
+
+        if(!$entity instanceof Product)
+            return;
+
+        $filename = $entity->getPicture();
+
+        if($filename != null)
+            unlink($this->uploader->getTargetDir() . '/' . $filename);
+    }
+}
