@@ -1,14 +1,19 @@
-Symfony Standard Edition
+Projet ODI M1 Informatique 2016 - Lamatrice
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+Voici la démarche d'installation du projet ainsi que les différentes commandes utiles à sa mise en place.
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
-
-What's inside?
+Installation
 --------------
+
+ * Afin de télécharger les dépendances du projet, il est nécessaire d'exécutez la commande :
+
+`> php composer.phar install`
+
+Les différents paramètres ont été pré-remplis, modifiez-les pour vous adapter à votre système.
+
+ * Pour créer la base de données exécutez :
+ 
 
 The Symfony Standard Edition is configured with the following defaults:
 
