@@ -9,15 +9,27 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 use AppBundle\Entity\Product;
 use AppBundle\FileUploader;
 
+/**
+ * Classe qui upload les images d'un produit en fonction de son cycle de vie doctrine.
+ * @package AppBundle\EventListener
+ */
 class PictureUploadListener
 {
     private $uploader;
 
+    /**
+     * PictureUploadListener constructor.
+     * @param FileUploader $uploader
+     */
     public function __construct(FileUploader $uploader)
     {
         $this->uploader = $uploader;
     }
 
+    /**
+     * Avant le persit du produit, l'image est téléchargée.
+     * @param LifecycleEventArgs $args
+     */
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
@@ -28,6 +40,10 @@ class PictureUploadListener
         $this->uploadFile($entity);
     }
 
+    /**
+     * Avant l'update d'un produit, si l'image est modifiée, elle est téléchargée.
+     * @param PreUpdateEventArgs $args
+     */
     public function preUpdate(PreUpdateEventArgs $args)
     {
         $entity = $args->getEntity();
@@ -50,16 +66,18 @@ class PictureUploadListener
 
     }
 
+    /**
+     * Upload de l'image.
+     * @param $entity
+     */
     private function uploadFile($entity)
     {
-        // upload only works for Product entities
         if (!$entity instanceof Product) {
             return;
         }
 
         $file = $entity->getPicture();
 
-        // only upload new files
         if (!$file instanceof UploadedFile) {
             return;
         }
@@ -68,6 +86,10 @@ class PictureUploadListener
         $entity->setPicture($fileName);
     }
 
+    /**
+     * Lors de la suppresison du produit, suppression de son image.
+     * @param LifecycleEventArgs $args
+     */
     public function preRemove(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
